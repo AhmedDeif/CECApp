@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="IssueDetailsFooterCollectionReusableView" customModule="ConstructionReviewApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="352" height="140"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rAe-CK-NA8">
+                    <rect key="frame" x="0.0" y="0.0" width="352" height="140"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09M-IM-SCs">
+                            <rect key="frame" x="8" y="16" width="48.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPl-z1-PGt">
+                            <rect key="frame" x="60.5" y="16" width="34" height="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Issue status has been changed to Done. Please take one of the actions below!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nD8-Ih-tjI">
+                            <rect key="frame" x="61.5" y="49" width="229" height="26.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="26.5" id="EDP-7f-ehN"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sES-AY-w3J">
+                            <rect key="frame" x="0.0" y="87.5" width="352" height="40"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvS-CC-4Ev">
+                                    <rect key="frame" x="30.5" y="5" width="141" height="30"/>
+                                    <color key="backgroundColor" red="0.32549019607843138" green="1" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Close Issue"/>
+                                    <connections>
+                                        <action selector="closeIssueButtonTapped:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="Gd1-ZB-vwv"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="85m-Qy-JPq">
+                                    <rect key="frame" x="180.5" y="4.5" width="141" height="30"/>
+                                    <color key="backgroundColor" red="0.99856823682785034" green="0.32270258665084839" blue="0.32296496629714966" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Reopen Issue"/>
+                                    <connections>
+                                        <action selector="reopenIssueButtonTapped:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="EyL-aj-vPZ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="85m-Qy-JPq" firstAttribute="centerX" secondItem="sES-AY-w3J" secondAttribute="centerX" multiplier="1.425" id="1z4-Kb-ZOc"/>
+                                <constraint firstItem="jvS-CC-4Ev" firstAttribute="centerX" secondItem="sES-AY-w3J" secondAttribute="centerX" multiplier="0.575" id="KUI-Gu-tRa"/>
+                                <constraint firstItem="jvS-CC-4Ev" firstAttribute="height" secondItem="85m-Qy-JPq" secondAttribute="height" id="UXx-QL-yWp"/>
+                                <constraint firstItem="jvS-CC-4Ev" firstAttribute="centerY" secondItem="sES-AY-w3J" secondAttribute="centerY" id="WMg-qY-xDT"/>
+                                <constraint firstItem="85m-Qy-JPq" firstAttribute="width" secondItem="jvS-CC-4Ev" secondAttribute="width" id="bRD-I1-paY"/>
+                                <constraint firstItem="jvS-CC-4Ev" firstAttribute="width" secondItem="sES-AY-w3J" secondAttribute="width" multiplier="0.4" id="gcN-yT-0kb"/>
+                                <constraint firstAttribute="height" constant="40" id="tTA-j8-kQs"/>
+                                <constraint firstItem="85m-Qy-JPq" firstAttribute="centerY" secondItem="jvS-CC-4Ev" secondAttribute="centerY" id="yt0-IV-VqB"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1K-GI-tyn">
+                            <rect key="frame" x="320" y="12" width="20" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="jIx-dw-Rj0"/>
+                                <constraint firstAttribute="height" constant="18" id="stu-HY-wPo"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="triangleArrow"/>
+                            <connections>
+                                <action selector="showMoreButtonTappes:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="wv9-PD-QXj"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="sES-AY-w3J" firstAttribute="top" secondItem="nD8-Ih-tjI" secondAttribute="bottom" constant="12" id="3aF-qg-nWW"/>
+                        <constraint firstItem="l1K-GI-tyn" firstAttribute="top" secondItem="rAe-CK-NA8" secondAttribute="top" constant="12" id="HL7-qC-LxC"/>
+                        <constraint firstItem="nD8-Ih-tjI" firstAttribute="width" secondItem="rAe-CK-NA8" secondAttribute="width" multiplier="0.65" id="PLe-Uj-s3H"/>
+                        <constraint firstItem="09M-IM-SCs" firstAttribute="leading" secondItem="rAe-CK-NA8" secondAttribute="leading" constant="8" id="Pmm-FO-7ck"/>
+                        <constraint firstAttribute="height" priority="250" constant="120" id="V1o-R2-X2T"/>
+                        <constraint firstItem="nD8-Ih-tjI" firstAttribute="top" secondItem="mPl-z1-PGt" secondAttribute="bottom" constant="16" id="Zu2-jb-IOR"/>
+                        <constraint firstItem="mPl-z1-PGt" firstAttribute="leading" secondItem="09M-IM-SCs" secondAttribute="trailing" constant="4" id="dYy-Bp-g1W"/>
+                        <constraint firstItem="sES-AY-w3J" firstAttribute="width" secondItem="rAe-CK-NA8" secondAttribute="width" id="gja-lh-2z0"/>
+                        <constraint firstItem="sES-AY-w3J" firstAttribute="centerX" secondItem="rAe-CK-NA8" secondAttribute="centerX" id="hFA-u6-xA0"/>
+                        <constraint firstItem="09M-IM-SCs" firstAttribute="top" secondItem="rAe-CK-NA8" secondAttribute="top" constant="16" id="pdR-aJ-Kb0"/>
+                        <constraint firstItem="nD8-Ih-tjI" firstAttribute="centerX" secondItem="rAe-CK-NA8" secondAttribute="centerX" id="rNH-r4-Vag"/>
+                        <constraint firstItem="mPl-z1-PGt" firstAttribute="centerY" secondItem="09M-IM-SCs" secondAttribute="centerY" id="udn-hg-hMF"/>
+                        <constraint firstAttribute="trailing" secondItem="l1K-GI-tyn" secondAttribute="trailing" constant="12" id="v6A-J3-Gp9"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="rAe-CK-NA8" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="2gy-oN-M0l"/>
+                <constraint firstItem="rAe-CK-NA8" firstAttribute="top" secondItem="VXr-Tz-HHm" secondAttribute="top" id="6uR-NG-dj8"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="rAe-CK-NA8" secondAttribute="bottom" id="m5v-g3-M1Z"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="rAe-CK-NA8" secondAttribute="trailing" id="xbI-dI-cVW"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="buttonViewHeightConstraint" destination="tTA-j8-kQs" id="ms9-Qf-szx"/>
+                <outlet property="buttonsContainerView" destination="sES-AY-w3J" id="Lrr-jw-XL6"/>
+                <outlet property="closeIssueButton" destination="jvS-CC-4Ev" id="5IA-yl-8TX"/>
+                <outlet property="issueStatusDescription" destination="nD8-Ih-tjI" id="NYn-bi-OYI"/>
+                <outlet property="issueStatusDescriptionHeightConstraint" destination="EDP-7f-ehN" id="tpT-ef-TZA"/>
+                <outlet property="reopenIssueButton" destination="85m-Qy-JPq" id="p9H-Gt-pVi"/>
+                <outlet property="statusLabel" destination="mPl-z1-PGt" id="XuN-u1-63V"/>
+                <outlet property="viewHeight" destination="V1o-R2-X2T" id="yTn-J3-3IQ"/>
+            </connections>
+            <point key="canvasLocation" x="50" y="99"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="triangleArrow" width="50" height="50"/>
+    </resources>
+</document>

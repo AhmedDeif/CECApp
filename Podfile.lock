@@ -1,0 +1,30 @@
+PODS:
+  - Alamofire (4.8.0)
+  - Cosmos (16.0.0)
+  - NVActivityIndicatorView (4.4.0):
+    - NVActivityIndicatorView/Presenter (= 4.4.0)
+  - NVActivityIndicatorView/Presenter (4.4.0)
+  - Toast-Swift (3.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - Cosmos (~> 16.0)
+  - NVActivityIndicatorView
+  - Toast-Swift (~> 3.0.1)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Cosmos
+    - NVActivityIndicatorView
+    - Toast-Swift
+
+SPEC CHECKSUMS:
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  Cosmos: 7bcee0fa858a9355a214f2a181be5dffcee42c81
+  NVActivityIndicatorView: ec7440a57af2450319d3a4181cca7da6fc127064
+  Toast-Swift: ba0b01b095aada709d915f9beb1d38184a2721c3
+
+PODFILE CHECKSUM: 5710c9bbda8128c162bbe54368d9847a99319be8
+
+COCOAPODS: 1.5.0
