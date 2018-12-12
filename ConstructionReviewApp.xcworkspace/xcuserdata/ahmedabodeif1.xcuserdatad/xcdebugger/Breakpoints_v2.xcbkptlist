@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
-            timestampString = "566230491.1773961"
+            timestampString = "566311646.70007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
             landmarkName = "LoginViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,27 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
-            timestampString = "566230491.177476"
+            timestampString = "566311646.700501"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "textFieldShouldBeginEditing(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
-            timestampString = "566230491.177537"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "keyboardWasShown(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
-            timestampString = "566230491.177591"
+            timestampString = "566311646.700806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "keyboardWasShown(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
-            timestampString = "566230491.177644"
+            timestampString = "566311646.7010961"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "keyboardWasShown(notification:)"
             landmarkType = "7">
             <Locations>
@@ -121,13 +105,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
-            timestampString = "566230491.177699"
+            filePath = "ConstructionReviewApp/ViewModels/LoginViewModel.swift"
+            timestampString = "566311646.701619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "keyboardWasShown(notification:)"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "login(username:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -137,13 +121,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ConstructionReviewApp/ViewControllers/RegistrationViewController.swift"
-            timestampString = "566230521.051808"
+            filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
+            timestampString = "566311646.701677"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "keyboardWillBeHidden(notification:)"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "validateFields()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
+            timestampString = "566311646.701933"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "validateFields()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

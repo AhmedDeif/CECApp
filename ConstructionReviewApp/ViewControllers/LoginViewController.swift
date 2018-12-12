@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toast_Swift
 
 class LoginViewController: UIViewController {
 
@@ -20,6 +21,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordErrorImage: UIImageView!
     @IBOutlet weak var scrollView: UIScrollView!
     weak var activeTextView: UITextField?
+    var viewModel = LoginViewModel()
     
     
     
@@ -83,25 +85,20 @@ class LoginViewController: UIViewController {
         self.scrollView.scrollIndicatorInsets = contentInsets
         
         var aRect : CGRect = self.view.frame
-         print("Frame size: \(aRect.size)")
         aRect.size.height -= keyboardSize!.height
-        print("Active rect size minus keyboard : \(aRect.size.height)")
-        print("keyboard height: '\(keyboardSize!.height)")
         
         let activeTextFieldRect: CGRect? = self.view.window?.convert((activeTextView?.frame)!, from: activeTextView)
         
         let maxPoint: CGPoint? = CGPoint(x: (activeTextFieldRect?.maxX)!, y: (activeTextFieldRect?.maxY)! )
-         print("Maxpoint: \(maxPoint)")
         if self.activeTextView != nil {
             if (!aRect.contains(maxPoint!)){
-                print("Must scroll to make view visible")
                 self.scrollView.scrollRectToVisible(activeTextFieldRect!, animated: true)
             }
-            
         }
     }
     
-    @objc func keyboardWillBeHidden(notification: NSNotification){
+    
+    @objc func keyboardWillBeHidden(notification: NSNotification) {
         //Once keyboard disappears, restore original positions
         let contentInsets: UIEdgeInsets = .zero
         self.scrollView.contentInset = contentInsets
@@ -109,7 +106,27 @@ class LoginViewController: UIViewController {
 
         self.scrollView.isScrollEnabled = true
     }
-
+    
+    @IBAction func loginAction(_ sender: Any) {
+        
+        if self.validateFields() {
+            self.startAnimating()
+            viewModel.login(username: emailTextfield.text!, password: passwordTextfield.text!) { (loginAuthorised, error) in
+                self.stopAnimating()
+                if loginAuthorised {
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "projectsNavigationController") as! UINavigationController
+                    self.present(viewController, animated: true, completion: nil)
+                }
+                else {
+                    self.showError(textfield: self.passwordTextfield, error: error!)
+                }
+                
+            }
+        }
+    }
+    
+    
 }
 
 
@@ -121,6 +138,7 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.validateFields()
         textField.resignFirstResponder()
         return true
     }
@@ -128,8 +146,39 @@ extension LoginViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.activeTextView = nil
     }
-
     
+    func validateFields() -> Bool {
+        var allFieldsAreValid = true
+        if emailTextfield.hasText {
+            let emailValidation = self.viewModel.validateEmailField(text: emailTextfield.text!)
+            if !emailValidation.0 {
+                showError(textfield: emailTextfield, error: emailValidation.1!)
+                return false
+            }
+            else {
+                emailErrorImage.isHidden = true
+            }
+        }
+        else {
+            showError(textfield: emailTextfield, error: ErrorModel(type: .emptyField, message: "This field is required"))
+            return false
+        }
+        return allFieldsAreValid
+    }
+    
+    
+    func showError(textfield:UITextField, error:ErrorModel) {
+        switch textfield {
+        case emailTextfield:
+            emailErrorImage.isHidden = false
+        case passwordTextfield:
+            passwordTextfield.isHidden = false
+        default:
+            break
+        }
+        self.view.makeToast(error.message, duration: 3.0, position: .top, title: nil, image: nil, style: ToastManager.shared.style, completion: nil)
+    }
+
     
 }
 

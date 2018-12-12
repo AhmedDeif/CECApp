@@ -21,5 +21,13 @@ class ProjectsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func logoutButtonAction(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: UserDefaults.Keys.TokenKey.rawValue)
+        UserDefaults.standard.set(false, forKey: UserDefaults.Keys.isLoggedIn.rawValue)
+        NetworkManager.shared().deregisterAccessToken()
+        let storybaord = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storybaord.instantiateViewController(withIdentifier: "LoginViewController")
+        self.present(viewController, animated: true, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+    }
+    
 }

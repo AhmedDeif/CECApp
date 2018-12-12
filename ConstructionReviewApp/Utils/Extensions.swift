@@ -8,6 +8,32 @@
 
 import Foundation
 import UIKit
+import NVActivityIndicatorView
+
+
+
+struct ErrorModel: Error {
+    
+    enum errorType {
+        case emptyField
+        case fieldTooShort
+        case fieldTooLong
+        case invalidToken
+        case passwordsDoNotMatch
+        case noNetworkConnection
+        case invalidEmailFormat
+        case loginNotAuthorised
+    }
+    
+    var message: String
+    var type: errorType
+    
+    init(type: errorType, message:String) {
+        self.type = type
+        self.message = message
+    }
+}
+
 
 
 extension UIColor {
@@ -48,4 +74,37 @@ extension UIView {
         gradientLayer.frame = self.bounds
         self.layer.insertSublayer(gradientLayer, at: 0)
     }
+}
+
+extension UIViewController: NVActivityIndicatorViewable {
+    
+    func showLoadingIndicator() {
+        let indicatorSize: CGSize = CGSize(width: 30.0, height: 30.0)
+        startAnimating(indicatorSize,
+                       message: "",
+                       type: .lineScalePulseOutRapid)
+
+    }
+    
+    func hideLoadingIndicator() {
+        stopAnimating()
+    }
+}
+
+extension UserDefaults {
+    enum Keys:String {
+        case TokenKey = "Token"
+        case isLoggedIn = "isLoggedIn"
+    }
+}
+
+extension String {
+    
+    func isValidEmail() -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: self)
+    }
+    
+
 }

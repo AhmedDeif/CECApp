@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Toast_Swift
+import NVActivityIndicatorView
 
 class RegistrationViewController: UIViewController {
     
@@ -41,7 +42,6 @@ class RegistrationViewController: UIViewController {
         super.viewDidLoad()
         styleView()
         configureView()
-//        networkCall()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -105,70 +105,47 @@ class RegistrationViewController: UIViewController {
         self.scrollView.scrollIndicatorInsets = contentInsets
         
         var aRect : CGRect = self.view.frame
-        
-        print("==============================")
-        print("activefieldTag: \(activeTextView?.tag)")
-        print("Frame size: \(aRect.size)")
-        
         aRect.size.height -= keyboardSize!.height
-        
-        print("Active rect size minus keyboard : \(aRect.size.height)")
-        print("keyboard height: '\(keyboardSize!.height)")
-        
         let activeTextFieldRect: CGRect? = self.view.window?.convert((activeTextView?.frame)!, from: activeTextView)
         
         let maxPoint: CGPoint? = CGPoint(x: (activeTextFieldRect?.maxX)!, y: (activeTextFieldRect?.maxY)! )
-//        let maxPoint = activeTextFieldRect?.
-        print("Maxpoint: \(maxPoint)")
-        
         
         if self.activeTextView != nil {
             if (!aRect.contains(maxPoint!)){
-                print("Must scroll to make view visible")
                 self.scrollView.scrollRectToVisible(activeTextFieldRect!, animated: true)
             }
             
         }
     }
     
-    @objc func keyboardWillBeHidden(notification: NSNotification){
-        //Once keyboard disappears, restore original positions
+    @objc func keyboardWillBeHidden(notification: NSNotification) {
         let contentInsets: UIEdgeInsets = .zero
         self.scrollView.contentInset = contentInsets
         self.scrollView.scrollIndicatorInsets = contentInsets
-        
         self.scrollView.isScrollEnabled = true
     }
     
     
-    func networkCall() {
-        
-        let paramters = ["token":"0902",
-                         "password":"Ahmed123",
-                         "confirm":"Ahmed123"]
-        NetworkManager.shared().request(API.validateToken, method: .post, parameters: paramters, encoding: JSONEncoding.default).responseJSON { response in
-            switch response.result {
-            case let .success(value):
-                print("Token unregistered successfully")
-                
-                if let jsonData = response.data {
-                    let decodedObj = try? JSONDecoder().decode(ValidateToken.self, from: jsonData)
-                    print(jsonData)
-                    print(decodedObj)
-                }
-            case let .failure(error):
-                print("Failed to unregister token.")
-            }
-        }
-    }
-    
 
     @IBAction func registerButtonTapped(_ sender: Any) {
-        // ToDo: check that all fields are now valid
-        // ToDo: Add completition handler
-        viewModel.registerUser(token: accessKeyTextfield.text!, password: passwordTextField.text!, confirmPassword: confirmPasswordTextfield.text!, completion: { () in
-            // ToDo: deactivate loading screen
-        })
+        
+        if viewModel.validateAllFields(token: accessKeyTextfield.text!, password: passwordTextField.text!, confirmPassword: confirmPasswordTextfield.text!) {
+            if NetworkManager.isConnectedToInternet() {
+                self.showLoadingIndicator()
+                viewModel.registerUser(token: accessKeyTextfield.text!, password: passwordTextField.text!, confirmPassword: confirmPasswordTextfield.text!, completion: { () in
+                    self.hideLoadingIndicator()
+                    
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "projectsNavigationController") as! UINavigationController
+                    self.present(viewController, animated: true, completion: nil)
+                    
+                })
+            }
+            else {
+                self.view.makeToast("Your are not connected to the internet")
+            }
+        }
+        
     }
     
     
@@ -187,48 +164,14 @@ class RegistrationViewController: UIViewController {
 
 extension RegistrationViewController: UITextFieldDelegate {
     
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         self.activeTextView = textField
         return true
     }
     
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        switch textField {
-        case accessKeyTextfield:
-            let result = viewModel.validateTokenField(fieldInput: accessKeyTextfield.text!)
-            if !result.0 {
-                let error = result.1
-                accessKeyErrorImage.isHidden = false
-                self.view.makeToast(error?.message, duration: 3.0, position: .top, title: nil, image: nil, style: ToastManager.shared.style, completion: nil)
-            }
-            else {
-                accessKeyErrorImage.isHidden = true
-            }
-        case passwordTextField:
-            let result = viewModel.validatePasswordField(fieldInput: passwordTextField.text!)
-            if !result.0 {
-                let error = result.1
-                passwordErrorImage.isHidden = false
-                self.view.makeToast(error?.message, duration: 3.0, position: .top, title: nil, image: nil, style: ToastManager.shared.style, completion: nil)
-            }
-            else {
-                passwordErrorImage.isHidden = true
-            }
-        case confirmPasswordTextfield:
-            let result = viewModel.validateConfirmPasswordField(password: passwordTextField.text!, confirmPassword: confirmPasswordTextfield.text!)
-            if !result.0 {
-                let error = result.1
-                confirmPasswordErrorImage.isHidden = false
-                self.view.makeToast(error?.message, duration: 3.0, position: .top, title: nil, image: nil, style: ToastManager.shared.style, completion: nil)
-            }
-            else {
-                confirmPasswordErrorImage.isHidden = true
-            }
-        default:
-            print("Unkown error occured")
-        }
+        validateTextFields()
         textField.resignFirstResponder()
         return true
     }
@@ -236,6 +179,57 @@ extension RegistrationViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.activeTextView = nil
+    }
+    
+    func validateTextFields() {
+        if accessKeyTextfield.hasText {
+            let tokenValidation = viewModel.validateTokenField(fieldInput: accessKeyTextfield.text!)
+            if !tokenValidation.0 {
+                showError(textfield: accessKeyTextfield, error: tokenValidation.1!)
+            }
+            else {
+                accessKeyErrorImage.isHidden = true
+            }
+        }
+        if passwordTextField.hasText {
+            let passwordValidation = viewModel.validatePasswordField(fieldInput: passwordTextField.text!)
+            if !passwordValidation.0 {
+                showError(textfield: passwordTextField, error: passwordValidation.1!)
+            }
+            else {
+                passwordErrorImage.isHidden = true
+            }
+        }
+        if confirmPasswordTextfield.hasText {
+            let confirmPasswordValidation: (Bool, ErrorModel?)
+            if let passwordText = passwordTextField.text{
+                confirmPasswordValidation = viewModel.validateConfirmPasswordField(password: passwordText, confirmPassword: confirmPasswordTextfield.text!)
+            }
+            else {
+                confirmPasswordValidation = viewModel.validateConfirmPasswordField(password: "", confirmPassword: confirmPasswordTextfield.text!)
+            }
+            if !confirmPasswordValidation.0 {
+                showError(textfield: confirmPasswordTextfield, error: confirmPasswordValidation.1!)
+            }
+            else {
+                confirmPasswordErrorImage.isHidden = true
+            }
+        }
+    }
+    
+    
+    func showError(textfield: UITextField, error: ErrorModel) {
+        switch textfield {
+        case accessKeyTextfield:
+            accessKeyErrorImage.isHidden = false
+        case passwordTextField:
+            passwordErrorImage.isHidden = false
+        case confirmPasswordTextfield:
+            confirmPasswordErrorImage.isHidden = false
+        default:
+            break
+        }
+        self.view.makeToast(error.message, duration: 3.0, position: .top, title: nil, image: nil, style: ToastManager.shared.style, completion: nil)
     }
 
     

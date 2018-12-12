@@ -34,7 +34,7 @@ class NetworkManager: Alamofire.SessionManager {
         return NetworkReachabilityManager()!.isReachable
     }
     
-    func registerAccessToken() {
+    func registerAccessToken(accessToken:String) {
         NetworkManager.shared().adapter = AccessTokenAdapter(accessToken:"token")
     }
     

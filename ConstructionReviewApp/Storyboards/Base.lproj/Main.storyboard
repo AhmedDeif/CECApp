@@ -14,7 +14,7 @@
         <!--Projects-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ConstructionReviewApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ProjectsViewController" customModule="ConstructionReviewApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,7 +37,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="SIN-DA-t45"/>
-                    <navigationItem key="navigationItem" title="Projects" id="LcB-hA-Y4X"/>
+                    <navigationItem key="navigationItem" title="Projects" id="LcB-hA-Y4X">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="WnD-6s-big">
+                            <connections>
+                                <action selector="logoutButtonAction:" destination="BYZ-38-t0r" id="Jxp-Zo-wFe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -95,7 +101,7 @@
         <!--Navigation Controller-->
         <scene sceneID="ShQ-Q1-uuu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2w3-uH-x2G" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="projectsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="2w3-uH-x2G" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="XO2-TG-FAK">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -119,7 +125,7 @@
         <!--Login View Controller-->
         <scene sceneID="Z3C-ba-WXO">
             <objects>
-                <viewController id="iEF-DK-rMp" customClass="LoginViewController" customModule="ConstructionReviewApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="iEF-DK-rMp" customClass="LoginViewController" customModule="ConstructionReviewApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tAa-gY-9hy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -245,6 +251,9 @@
                                                 <state key="normal" title="Login">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="loginAction:" destination="iEF-DK-rMp" eventType="touchUpInside" id="40N-o4-luu"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5l4-xG-waj">
                                                 <rect key="frame" x="118" y="527" width="139" height="30"/>
@@ -550,46 +559,7 @@
                                                         <attributes>
                                                             <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <font key="NSFont" size="21" name="HelveticaNeue"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                                <tabStops>
-                                                                    <textTab alignment="left" location="28">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="56">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="84">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="112">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="140">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="168">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="196">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="224">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="252">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="280">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="308">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                    <textTab alignment="left" location="336">
-                                                                        <options/>
-                                                                    </textTab>
-                                                                </tabStops>
-                                                            </paragraphStyle>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                             <integer key="NSUnderline" value="1"/>
                                                             <color key="NSUnderlineColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </attributes>
@@ -1011,7 +981,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.62481271404109584" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xZz-ph-cRo" firstAttribute="bottom" secondItem="FAD-gp-Qt1" secondAttribute="bottom" id="4zv-Wb-7IT"/>
+                            <constraint firstAttribute="bottom" secondItem="FAD-gp-Qt1" secondAttribute="bottom" id="4zv-Wb-7IT"/>
                             <constraint firstItem="FAD-gp-Qt1" firstAttribute="leading" secondItem="xZz-ph-cRo" secondAttribute="leading" id="B8d-KN-u4g"/>
                             <constraint firstItem="FAD-gp-Qt1" firstAttribute="height" secondItem="XcW-Vi-9Ql" secondAttribute="height" multiplier="0.6" id="N7m-dK-930"/>
                             <constraint firstItem="xZz-ph-cRo" firstAttribute="trailing" secondItem="FAD-gp-Qt1" secondAttribute="trailing" id="Xi0-gw-SL9"/>
@@ -1291,6 +1261,7 @@
         <image name="trash" width="60" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="llr-0J-Pgf"/>
         <segue reference="YOm-Z5-Jcc"/>
     </inferredMetricsTieBreakers>
 </document>

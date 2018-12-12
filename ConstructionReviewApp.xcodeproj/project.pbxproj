@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		13F40985B8187B14608D9554 /* Pods_ConstructionReviewAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D534EFA93D554BD4C8EE8A40 /* Pods_ConstructionReviewAppTests.framework */; };
+		4206A5A421C11D0E00261E11 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4206A5A321C11D0E00261E11 /* LoginViewModel.swift */; };
+		4206A5A621C12EF200261E11 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4206A5A521C12EF200261E11 /* LoginResponse.swift */; };
+		4206A5A821C12EFE00261E11 /* LoginFailureResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4206A5A721C12EFE00261E11 /* LoginFailureResponse.swift */; };
+		4206A5AA21C1465800261E11 /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4206A5A921C1465800261E11 /* ProjectModel.swift */; };
+		4206A5AC21C146EC00261E11 /* EmployeeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4206A5AB21C146EC00261E11 /* EmployeeModel.swift */; };
+		4206A5AE21C1481A00261E11 /* ProjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4206A5AD21C1481A00261E11 /* ProjectsViewModel.swift */; };
 		42239D59219DE2B800487413 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42239D58219DE2B800487413 /* AppDelegate.swift */; };
 		42239D5E219DE2B800487413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42239D5C219DE2B800487413 /* Main.storyboard */; };
 		42239D60219DE2BA00487413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42239D5F219DE2BA00487413 /* Assets.xcassets */; };
@@ -62,6 +68,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4206A5A321C11D0E00261E11 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4206A5A521C12EF200261E11 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		4206A5A721C12EFE00261E11 /* LoginFailureResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFailureResponse.swift; sourceTree = "<group>"; };
+		4206A5A921C1465800261E11 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
+		4206A5AB21C146EC00261E11 /* EmployeeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeModel.swift; sourceTree = "<group>"; };
+		4206A5AD21C1481A00261E11 /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
 		42239D55219DE2B800487413 /* ConstructionReviewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConstructionReviewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42239D58219DE2B800487413 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42239D5D219DE2B800487413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -166,9 +178,9 @@
 		42239D57219DE2B800487413 /* ConstructionReviewApp */ = {
 			isa = PBXGroup;
 			children = (
+				42239D7D219DE93D00487413 /* Models */,
 				4235237621AB48C500B367DA /* Storyboards */,
 				427EF83D21AB12A500F4E66D /* Views */,
-				42239D7D219DE93D00487413 /* Models */,
 				42239D7C219DE92D00487413 /* ViewModels */,
 				42239D7B219DE91800487413 /* CellViewControllers */,
 				42239D7A219DE90100487413 /* ViewControllers */,
@@ -253,6 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				42F1DD3E21BFB8770070B715 /* RegistrationViewModel.swift */,
+				4206A5A321C11D0E00261E11 /* LoginViewModel.swift */,
+				4206A5AD21C1481A00261E11 /* ProjectsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -261,6 +275,10 @@
 			isa = PBXGroup;
 			children = (
 				42F1DD3C21BE8CB90070B715 /* ValidateToken.swift */,
+				4206A5A521C12EF200261E11 /* LoginResponse.swift */,
+				4206A5A721C12EFE00261E11 /* LoginFailureResponse.swift */,
+				4206A5A921C1465800261E11 /* ProjectModel.swift */,
+				4206A5AB21C146EC00261E11 /* EmployeeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -478,23 +496,29 @@
 				42C9C89621A35C0F0033ABF9 /* IssueTableViewController.swift in Sources */,
 				42F1DD3B21BE86130070B715 /* Constants.swift in Sources */,
 				423A247221B58E5C00C6C8D5 /* RatingViewController.swift in Sources */,
+				4206A5AC21C146EC00261E11 /* EmployeeModel.swift in Sources */,
 				42239D80219DE98300487413 /* ProjectTableViewCell.swift in Sources */,
 				4226616021B520EF0075B928 /* ProjectDescriptionCustomHeaderView.swift in Sources */,
 				4294283C21A437630034A302 /* IssueImageCollectionViewCell.swift in Sources */,
 				42C9C89821A360560033ABF9 /* ProjectDetailsHeaderView.swift in Sources */,
 				423110DA21BBBB8500F3C2B3 /* LoginViewController.swift in Sources */,
+				4206A5A621C12EF200261E11 /* LoginResponse.swift in Sources */,
 				42239D59219DE2B800487413 /* AppDelegate.swift in Sources */,
 				4226616821B531620075B928 /* ProjectDescriptionViewController.swift in Sources */,
 				4294283321A42D9A0034A302 /* IssueImagesCollectionViewController.swift in Sources */,
 				42F1DD3F21BFB8770070B715 /* RegistrationViewModel.swift in Sources */,
 				42F1DD3D21BE8CB90070B715 /* ValidateToken.swift in Sources */,
 				427EF84221AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.swift in Sources */,
+				4206A5AA21C1465800261E11 /* ProjectModel.swift in Sources */,
 				4235237821AB4A4400B367DA /* Extensions.swift in Sources */,
+				4206A5AE21C1481A00261E11 /* ProjectsViewModel.swift in Sources */,
+				4206A5A421C11D0E00261E11 /* LoginViewModel.swift in Sources */,
 				4297308721A6B2BC00DB71E7 /* CameraHandler.swift in Sources */,
 				4294284721A45FD20034A302 /* ImageViewController.swift in Sources */,
 				4226616521B52B250075B928 /* ProjectDescriptionTableViewCell.swift in Sources */,
 				4297308B21A6BE2200DB71E7 /* reportIssueCollectionViewCell.swift in Sources */,
 				42F1DD3921BE85BA0070B715 /* NetworkManager.swift in Sources */,
+				4206A5A821C12EFE00261E11 /* LoginFailureResponse.swift in Sources */,
 				42F1DD3721BD6BE20070B715 /* ForgetPasswordViewController.swift in Sources */,
 				42239D83219DF1D700487413 /* ProjectsTableViewController.swift in Sources */,
 			);
@@ -660,7 +684,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3FNCL22L6F;
 				INFOPLIST_FILE = ConstructionReviewApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Abodeif.ConstructionReviewApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -676,7 +703,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3FNCL22L6F;
 				INFOPLIST_FILE = ConstructionReviewApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Abodeif.ConstructionReviewApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -693,7 +723,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3FNCL22L6F;
 				INFOPLIST_FILE = ConstructionReviewAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Abodeif.ConstructionReviewAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -711,7 +745,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3FNCL22L6F;
 				INFOPLIST_FILE = ConstructionReviewAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = Abodeif.ConstructionReviewAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

@@ -12,40 +12,51 @@ import Alamofire
 
 class RegistrationViewModel {
     
+    var dataTaskInProgress: Bool = false
+    var token: String?
     
-    
-    func validateTokenField(fieldInput:String) -> (Bool,RegistrationError?) {
+    func validateTokenField(fieldInput:String) -> (Bool,ErrorModel?) {
         if fieldInput.isEmpty {
-            let error = RegistrationError(type: .emptyField, message: "This field is required")
+            let error = ErrorModel(type: .emptyField, message: "This field is required")
             return (false,error)
         }
         if fieldInput.count < 4 {
-            let error = RegistrationError(type: .fieldTooShort, message: "The token must be 4 digits long")
+            let error = ErrorModel(type: .fieldTooShort, message: "The token must be 4 digits long")
             return (false,error)
         }
         if fieldInput.count > 4 {
-            let error = RegistrationError(type: .fieldTooLong, message: "The token must be 4 digits long")
+            let error = ErrorModel(type: .fieldTooLong, message: "The token must be 4 digits long")
             return (false,error)
         }
         return (true, nil)
     }
     
     
-    func validatePasswordField(fieldInput:String) -> (Bool, RegistrationError?) {
+    func validatePasswordField(fieldInput:String) -> (Bool, ErrorModel?) {
         if fieldInput.isEmpty {
-            let error = RegistrationError(type: .emptyField, message: "The password field cannot be empty")
+            let error = ErrorModel(type: .emptyField, message: "The password field cannot be empty")
             return (false,error)
         }
         return (true, nil)
     }
     
     
-    func validateConfirmPasswordField(password:String, confirmPassword:String) -> (Bool, RegistrationError?) {
+    func validateConfirmPasswordField(password:String, confirmPassword:String) -> (Bool, ErrorModel?) {
         if password != confirmPassword {
-            let error = RegistrationError(type: .passwordsDoNotMatch, message: "The passwords do not match")
+            let error = ErrorModel(type: .passwordsDoNotMatch, message: "The passwords do not match")
             return (false,error)
         }
         return (true, nil)
+    }
+    
+    func validateAllFields(token:String, password:String, confirmPassword:String) -> Bool{
+        let tokenValidation = self.validateTokenField(fieldInput: token)
+        let passwordValidation = self.validatePasswordField(fieldInput: password)
+        let confirmPasswordValidation = self.validateConfirmPasswordField(password: password, confirmPassword: confirmPassword)
+        if tokenValidation.0 && passwordValidation.0 && confirmPasswordValidation.0 {
+            return true
+        }
+        return false
     }
 
     
@@ -53,69 +64,61 @@ class RegistrationViewModel {
     
     func registerUser(token:String, password:String, confirmPassword:String, completion: (() -> ())?) {
         
-        let paramters = ["token":token,
-                         "password":password,
-                         "confirm":confirmPassword]
-        
-        NetworkManager.shared().request(API.validateToken, method: .post, parameters: paramters, encoding: JSONEncoding.default).responseJSON { response in
-            switch response.result {
-                
-            case let .success(value):
-                print("Token unregistered successfully")
-                if let jsonData = response.data {
-                    let decodedObj = try? JSONDecoder().decode(ValidateToken.self, from: jsonData)
-                    print(jsonData)
-                    print(decodedObj)
-                }
-                self.onSuccess()
-                if completion != nil {
-                    completion!()
-                }
-                
-            case let .failure(error):
-                print("Failed to unregister token.")
-                self.onFailure()
-                if completion != nil {
-                    completion!()
+        if NetworkManager.isConnectedToInternet() {
+            self.dataTaskInProgress = true
+            let paramters = ["token":token,
+                             "password":password,
+                             "confirm":confirmPassword]
+            
+            NetworkManager.shared().request(API.validateToken, method: .post, parameters: paramters, encoding: JSONEncoding.default).responseJSON { response in
+                switch response.result {
+                    
+                case let .success(value):
+                    print("Token unregistered successfully")
+                    if let jsonData = response.data {
+                        let decodedObj = try? JSONDecoder().decode(ValidateToken.self, from: jsonData)
+                        print(jsonData)
+                        print(decodedObj)
+                        self.token = decodedObj?.token
+                    }
+                    self.onSuccess()
+                    if completion != nil {
+                        completion!()
+                    }
+                    
+                case let .failure(error):
+                    print("Failed to unregister token.")
+                    self.onFailure()
+                    if completion != nil {
+                        completion!()
+                    }
                 }
             }
         }
+        else {
+            self.onFailure()
+        }
+        
     }
    
     
     func onFailure() {
-        
+        self.dataTaskInProgress = false
     }
     
     
     func onSuccess() {
-        // ToDo: Save token in userdefaults
+        self.dataTaskInProgress = false
+        UserDefaults.standard.set(self.token, forKey: UserDefaults.Keys.TokenKey.rawValue)
+        UserDefaults.standard.set(true, forKey: UserDefaults.Keys.isLoggedIn.rawValue)
+        NetworkManager.shared().registerAccessToken(accessToken: self.token!)
+        self.token = nil
     }
     
     
 }
 
 
-struct RegistrationError: Error {
-    
-    enum errorType {
-        case emptyField
-        case fieldTooShort
-        case fieldTooLong
-        case invalidToken
-        case passwordsDoNotMatch
-    }
-    
-    var message: String
-    var type: errorType
-    
-    init(type: errorType, message:String) {
-        self.type = type
-        self.message = message
-    }
-
-    
-}
 
 
 
