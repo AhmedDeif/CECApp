@@ -31,6 +31,8 @@
 		4235237821AB4A4400B367DA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235237721AB4A4400B367DA /* Extensions.swift */; };
 		4235237A21AB58BF00B367DA /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235237921AB58BF00B367DA /* ProjectsViewController.swift */; };
 		423A247221B58E5C00C6C8D5 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423A247121B58E5C00C6C8D5 /* RatingViewController.swift */; };
+		426EF18B21C9454E00E78655 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426EF18A21C9454E00E78655 /* ImageModel.swift */; };
+		426EF18D21C9459C00E78655 /* IssueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426EF18C21C9459C00E78655 /* IssueModel.swift */; };
 		427EF84221AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427EF84021AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.swift */; };
 		427EF84321AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 427EF84121AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.xib */; };
 		4294283321A42D9A0034A302 /* IssueImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4294283221A42D9A0034A302 /* IssueImagesCollectionViewController.swift */; };
@@ -43,6 +45,12 @@
 		4297308721A6B2BC00DB71E7 /* CameraHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297308621A6B2BC00DB71E7 /* CameraHandler.swift */; };
 		4297308921A6BA9E00DB71E7 /* ReportIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297308821A6BA9E00DB71E7 /* ReportIssueViewController.swift */; };
 		4297308B21A6BE2200DB71E7 /* reportIssueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4297308A21A6BE2200DB71E7 /* reportIssueCollectionViewCell.swift */; };
+		429F5CA821CBD6F9008C43A9 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429F5CA721CBD6F9008C43A9 /* InfoViewController.swift */; };
+		42A4489E21C524AD00E15914 /* ProjectIssuesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A4489D21C524AC00E15914 /* ProjectIssuesViewModel.swift */; };
+		42A448A221C6307600E15914 /* IssueCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A448A121C6307600E15914 /* IssueCreationViewModel.swift */; };
+		42A448A421C65D9600E15914 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A448A321C65D9600E15914 /* ForgotPasswordViewModel.swift */; };
+		42A448A621C6618C00E15914 /* ForgetPasswordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A448A521C6618C00E15914 /* ForgetPasswordResponseModel.swift */; };
+		42A448A821C6713600E15914 /* ProjectIssuesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A448A721C6713600E15914 /* ProjectIssuesNavigationController.swift */; };
 		42C9C89321A356BE0033ABF9 /* IssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C9C89121A356BE0033ABF9 /* IssueTableViewCell.swift */; };
 		42C9C89421A356BE0033ABF9 /* IssueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C9C89221A356BE0033ABF9 /* IssueTableViewCell.xib */; };
 		42C9C89621A35C0F0033ABF9 /* IssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C9C89521A35C0F0033ABF9 /* IssueTableViewController.swift */; };
@@ -95,6 +103,8 @@
 		4235237721AB4A4400B367DA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4235237921AB58BF00B367DA /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
 		423A247121B58E5C00C6C8D5 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		426EF18A21C9454E00E78655 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		426EF18C21C9459C00E78655 /* IssueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueModel.swift; sourceTree = "<group>"; };
 		427EF84021AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailsFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		427EF84121AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueDetailsFooterCollectionReusableView.xib; sourceTree = "<group>"; };
 		4294283221A42D9A0034A302 /* IssueImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueImagesCollectionViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +117,12 @@
 		4297308621A6B2BC00DB71E7 /* CameraHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraHandler.swift; sourceTree = "<group>"; };
 		4297308821A6BA9E00DB71E7 /* ReportIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportIssueViewController.swift; sourceTree = "<group>"; };
 		4297308A21A6BE2200DB71E7 /* reportIssueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reportIssueCollectionViewCell.swift; sourceTree = "<group>"; };
+		429F5CA721CBD6F9008C43A9 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		42A4489D21C524AC00E15914 /* ProjectIssuesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectIssuesViewModel.swift; sourceTree = "<group>"; };
+		42A448A121C6307600E15914 /* IssueCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCreationViewModel.swift; sourceTree = "<group>"; };
+		42A448A321C65D9600E15914 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		42A448A521C6618C00E15914 /* ForgetPasswordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordResponseModel.swift; sourceTree = "<group>"; };
+		42A448A721C6713600E15914 /* ProjectIssuesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectIssuesNavigationController.swift; sourceTree = "<group>"; };
 		42C9C89121A356BE0033ABF9 /* IssueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTableViewCell.swift; sourceTree = "<group>"; };
 		42C9C89221A356BE0033ABF9 /* IssueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueTableViewCell.xib; sourceTree = "<group>"; };
 		42C9C89521A35C0F0033ABF9 /* IssueTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTableViewController.swift; sourceTree = "<group>"; };
@@ -182,8 +198,8 @@
 				4235237621AB48C500B367DA /* Storyboards */,
 				427EF83D21AB12A500F4E66D /* Views */,
 				42239D7C219DE92D00487413 /* ViewModels */,
-				42239D7B219DE91800487413 /* CellViewControllers */,
 				42239D7A219DE90100487413 /* ViewControllers */,
+				42239D7B219DE91800487413 /* CellViewControllers */,
 				42239D79219DE8F200487413 /* XIBs */,
 				42239D78219DE8DF00487413 /* Utils */,
 				42239D58219DE2B800487413 /* AppDelegate.swift */,
@@ -220,7 +236,6 @@
 				4294283B21A437630034A302 /* IssueImageCollectionViewCell.xib */,
 				42239D7F219DE98300487413 /* ProjectTableViewCell.xib */,
 				42C9C89221A356BE0033ABF9 /* IssueTableViewCell.xib */,
-				42C9C89921A360E20033ABF9 /* ProductDetailsHeaderView.xib */,
 				4294284321A45BBF0034A302 /* IssuePicturesCollectionReusableView.xib */,
 				4226616121B5210A0075B928 /* ProjectDescriptionCustomHeaderView.xib */,
 			);
@@ -234,7 +249,6 @@
 				42239D82219DF1D700487413 /* ProjectsTableViewController.swift */,
 				42C9C89521A35C0F0033ABF9 /* IssueTableViewController.swift */,
 				4294283421A42FC00034A302 /* IssueDetailsViewController.swift */,
-				42C9C89721A360560033ABF9 /* ProjectDetailsHeaderView.swift */,
 				4294283221A42D9A0034A302 /* IssueImagesCollectionViewController.swift */,
 				4297308821A6BA9E00DB71E7 /* ReportIssueViewController.swift */,
 				4235237921AB58BF00B367DA /* ProjectsViewController.swift */,
@@ -243,6 +257,8 @@
 				423110D921BBBB8500F3C2B3 /* LoginViewController.swift */,
 				42F1DD3421BD5AD70070B715 /* RegistrationViewController.swift */,
 				42F1DD3621BD6BE20070B715 /* ForgetPasswordViewController.swift */,
+				42A448A721C6713600E15914 /* ProjectIssuesNavigationController.swift */,
+				429F5CA721CBD6F9008C43A9 /* InfoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -267,6 +283,9 @@
 				42F1DD3E21BFB8770070B715 /* RegistrationViewModel.swift */,
 				4206A5A321C11D0E00261E11 /* LoginViewModel.swift */,
 				4206A5AD21C1481A00261E11 /* ProjectsViewModel.swift */,
+				42A4489D21C524AC00E15914 /* ProjectIssuesViewModel.swift */,
+				42A448A121C6307600E15914 /* IssueCreationViewModel.swift */,
+				42A448A321C65D9600E15914 /* ForgotPasswordViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -279,6 +298,9 @@
 				4206A5A721C12EFE00261E11 /* LoginFailureResponse.swift */,
 				4206A5A921C1465800261E11 /* ProjectModel.swift */,
 				4206A5AB21C146EC00261E11 /* EmployeeModel.swift */,
+				42A448A521C6618C00E15914 /* ForgetPasswordResponseModel.swift */,
+				426EF18A21C9454E00E78655 /* ImageModel.swift */,
+				426EF18C21C9459C00E78655 /* IssueModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -295,6 +317,8 @@
 		427EF83D21AB12A500F4E66D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				42C9C89721A360560033ABF9 /* ProjectDetailsHeaderView.swift */,
+				42C9C89921A360E20033ABF9 /* ProductDetailsHeaderView.xib */,
 				427EF84021AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.swift */,
 				427EF84121AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.xib */,
 			);
@@ -495,7 +519,9 @@
 				4297308921A6BA9E00DB71E7 /* ReportIssueViewController.swift in Sources */,
 				42C9C89621A35C0F0033ABF9 /* IssueTableViewController.swift in Sources */,
 				42F1DD3B21BE86130070B715 /* Constants.swift in Sources */,
+				42A4489E21C524AD00E15914 /* ProjectIssuesViewModel.swift in Sources */,
 				423A247221B58E5C00C6C8D5 /* RatingViewController.swift in Sources */,
+				429F5CA821CBD6F9008C43A9 /* InfoViewController.swift in Sources */,
 				4206A5AC21C146EC00261E11 /* EmployeeModel.swift in Sources */,
 				42239D80219DE98300487413 /* ProjectTableViewCell.swift in Sources */,
 				4226616021B520EF0075B928 /* ProjectDescriptionCustomHeaderView.swift in Sources */,
@@ -507,6 +533,7 @@
 				4226616821B531620075B928 /* ProjectDescriptionViewController.swift in Sources */,
 				4294283321A42D9A0034A302 /* IssueImagesCollectionViewController.swift in Sources */,
 				42F1DD3F21BFB8770070B715 /* RegistrationViewModel.swift in Sources */,
+				42A448A221C6307600E15914 /* IssueCreationViewModel.swift in Sources */,
 				42F1DD3D21BE8CB90070B715 /* ValidateToken.swift in Sources */,
 				427EF84221AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.swift in Sources */,
 				4206A5AA21C1465800261E11 /* ProjectModel.swift in Sources */,
@@ -516,10 +543,15 @@
 				4297308721A6B2BC00DB71E7 /* CameraHandler.swift in Sources */,
 				4294284721A45FD20034A302 /* ImageViewController.swift in Sources */,
 				4226616521B52B250075B928 /* ProjectDescriptionTableViewCell.swift in Sources */,
+				42A448A621C6618C00E15914 /* ForgetPasswordResponseModel.swift in Sources */,
+				426EF18B21C9454E00E78655 /* ImageModel.swift in Sources */,
+				42A448A821C6713600E15914 /* ProjectIssuesNavigationController.swift in Sources */,
 				4297308B21A6BE2200DB71E7 /* reportIssueCollectionViewCell.swift in Sources */,
 				42F1DD3921BE85BA0070B715 /* NetworkManager.swift in Sources */,
 				4206A5A821C12EFE00261E11 /* LoginFailureResponse.swift in Sources */,
 				42F1DD3721BD6BE20070B715 /* ForgetPasswordViewController.swift in Sources */,
+				426EF18D21C9459C00E78655 /* IssueModel.swift in Sources */,
+				42A448A421C65D9600E15914 /* ForgotPasswordViewModel.swift in Sources */,
 				42239D83219DF1D700487413 /* ProjectsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

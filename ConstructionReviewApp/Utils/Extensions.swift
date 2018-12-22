@@ -23,6 +23,9 @@ struct ErrorModel: Error {
         case noNetworkConnection
         case invalidEmailFormat
         case loginNotAuthorised
+        case serializationError
+        case requestFailed
+        case requestSucceeded
     }
     
     var message: String
@@ -95,6 +98,7 @@ extension UserDefaults {
     enum Keys:String {
         case TokenKey = "Token"
         case isLoggedIn = "isLoggedIn"
+        case passwordReset = "passwordReset"
     }
 }
 
@@ -105,6 +109,60 @@ extension String {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: self)
     }
-    
-
 }
+
+
+extension UIImage {
+    enum JPEGQuality: CGFloat {
+        case lowest  = 0
+        case low     = 0.25
+        case medium  = 0.5
+        case high    = 0.75
+        case highest = 1
+    }
+    
+    /// Returns the data for the specified image in JPEG format.
+    /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
+    /// - returns: A data object containing the JPEG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
+    func jpeg(_ jpegQuality: JPEGQuality) -> Data? {
+        return UIImageJPEGRepresentation(self, UIImage.JPEGQuality.low.rawValue)
+    }
+}
+
+
+extension UIView {
+    
+    func startShimmering(){
+        self.backgroundColor = UIColor.init(red: 190/255, green: 190/255, blue: 190/255, alpha: 0.51)
+        let light = UIColor.white.withAlphaComponent(0.7).cgColor
+        let alpha = UIColor.black.cgColor
+        
+        let gradient = CAGradientLayer()
+        gradient.colors = [alpha, light, alpha]
+        gradient.frame = CGRect(x: -self.bounds.size.width, y: 0, width: 3 * self.bounds.size.width, height: self.bounds.size.height)
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1.0, y: 0.525)
+        
+        gradient.locations = [0.4,0.5,0.6]
+        self.layer.mask = gradient
+        
+        let animation = CABasicAnimation(keyPath: "locations")
+        animation.fromValue = [0.0,0.1,0.2]
+        animation.toValue = [0.8,0.9,1.0]
+        animation.duration = 1.5
+        animation.repeatCount = HUGE
+        gradient.add(animation, forKey: "shimmer")
+        
+    }
+    
+    func stopShimmering(){
+        DispatchQueue.main.async {
+            self.layer.mask = nil
+            self.backgroundColor = .clear
+        }
+    }
+    
+}
+
+
+

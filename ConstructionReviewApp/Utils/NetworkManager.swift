@@ -35,7 +35,7 @@ class NetworkManager: Alamofire.SessionManager {
     }
     
     func registerAccessToken(accessToken:String) {
-        NetworkManager.shared().adapter = AccessTokenAdapter(accessToken:"token")
+        NetworkManager.shared().adapter = AccessTokenAdapter(accessToken:accessToken)
     }
     
     func deregisterAccessToken() {
@@ -48,7 +48,13 @@ class NetworkManager: Alamofire.SessionManager {
 class AccessTokenAdapter: RequestAdapter {
     
     private let accessToken: String
-    var authorizationRequiredEndPoints : [String] = []
+    var authorizationRequiredEndPoints : [String] = [
+        API.getProjects,
+        API.getProjectIssues.replacingOccurrences(of: "{projectId}", with: ""),
+        API.forgotPassword,
+        API.postProjectIssue.replacingOccurrences(of: "{projectId}", with: ""),
+        API.imagesURLPrefix
+    ]
     
     init(accessToken: String) {
         self.accessToken = accessToken
@@ -66,6 +72,28 @@ class AccessTokenAdapter: RequestAdapter {
             }
         }
         return requestWithAuthorization
+    }
+}
+
+extension NetworkManager {
+    
+    func downloadImage(sender: ImageLoadingCompletionHandler? ,url: URL, cellIndex: Int?, completion: @escaping (_ image: UIImage?, _ error: Error?, _ cellIndex: Int? ) -> Void) {
+        
+        if NetworkManager.isConnectedToInternet() {
+            NetworkManager.shared().request(url).responseData { (response) in
+                if let data = response.data {
+                    if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
+                        print(JSONString)
+                    }
+                    if let image = UIImage(data: data) {
+                        if sender != nil {
+                            sender?.onImageDownloadComplete(downloadedImage: image, cellIndex:cellIndex )
+                        }
+                        completion(image, nil, nil)
+                    }
+                }
+            }
+        }
     }
 }
 

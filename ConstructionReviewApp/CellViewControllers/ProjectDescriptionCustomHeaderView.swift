@@ -11,6 +11,7 @@ import UIKit
 class ProjectDescriptionCustomHeaderView: UITableViewHeaderFooterView {
     
 
+    @IBOutlet weak var projectTitleLabel: UILabel!
     @IBOutlet weak var projectStartDateLabel: UILabel!
     @IBOutlet weak var projectEndDateLabel: UILabel!
     @IBOutlet weak var projectPhaseLabel: UILabel!
@@ -23,6 +24,17 @@ class ProjectDescriptionCustomHeaderView: UITableViewHeaderFooterView {
     var compressedViewActive = true
     weak var tableViewDelegate: ProjectDescriptionViewController?
    
+    
+    
+    func setData(project: ProjectModel) {
+        self.projectStartDateLabel.text = project.getStartDate(withFormat: "dd/MM/yyyy")
+        self.projectEndDateLabel.text = project.getEndDate(withFormat: "dd/MM/yyyy")
+        self.projectPhaseLabel.text = project.getProjectPhase()
+        self.projectDescriptionLabel.text = project.description
+        self.projectTitleLabel.text = project.name
+    }
+    
+    
     @IBAction func readMoreTapped(_ sender: Any) {
         // change height of textView
         print("tpped")
@@ -36,14 +48,14 @@ class ProjectDescriptionCustomHeaderView: UITableViewHeaderFooterView {
             
             self.projectDescriptionLabelHeight.constant = expandedContentHeight!
             self.readMoreButton.setTitle("show less", for: .normal)
-//            self.invalidateIntrinsicContentSize()
+            self.projectDescriptionLabel.isScrollEnabled = true
         }
         else {
             compressedViewActive = true
+            self.projectDescriptionLabel.isScrollEnabled = false
             self.projectDescriptionLabelHeight.constant = compressedContentHeight!
             self.readMoreButton.setTitle("read more", for: .normal)
             self.tableViewDelegate?.readMoreButton(expandView: false, additionalHeight: self.expandedContentHeight! - self.compressedContentHeight!)
-//            self.invalidateIntrinsicContentSize()
         }
         
     }

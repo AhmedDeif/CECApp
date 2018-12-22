@@ -19,4 +19,9 @@ class IssuePicturesCollectionReusableView: UICollectionReusableView {
         // Initialization code
     }
     
+    func setData(issue: IssueModel) {
+        self.issueTypeLabel.text = issue.type
+        self.issueDescriptionLabel.text = issue.description
+    }
+    
 }

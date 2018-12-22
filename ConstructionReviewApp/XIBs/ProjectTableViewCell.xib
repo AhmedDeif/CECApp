@@ -77,9 +77,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Construction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWk-hM-UOs">
-                                <rect key="frame" x="263" y="56" width="80" height="12"/>
+                                <rect key="frame" x="263" y="56" width="62" height="12"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="KLe-sq-8Ee"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="KLe-sq-8Ee"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
                                 <color key="textColor" red="0.71593576670000003" green="0.76772278549999995" blue="0.83017742630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -131,9 +131,12 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="corneredView" destination="hbf-Bv-Gxp" id="Sbh-45-LTz"/>
+                <outlet property="endDate" destination="ege-bB-NzF" id="Pr9-FA-0k5"/>
                 <outlet property="projectNameLabel" destination="VNW-o5-25Z" id="d36-4N-NgM"/>
                 <outlet property="projectOwnerLabel" destination="jdb-d0-Jb9" id="Dgi-hd-IuH"/>
+                <outlet property="projectStatus" destination="hWk-hM-UOs" id="Cer-rp-WpS"/>
                 <outlet property="projectStatusImageView" destination="YqR-Nt-Dqe" id="wrm-dC-OUT"/>
+                <outlet property="startDate" destination="C73-hA-irc" id="Txt-5g-xs7"/>
             </connections>
             <point key="canvasLocation" x="69.5" y="86"/>
         </tableViewCell>

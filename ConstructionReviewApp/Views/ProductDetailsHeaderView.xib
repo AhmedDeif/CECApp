@@ -20,10 +20,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="380" height="84"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="farah test project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRx-Zq-8v1">
-                            <rect key="frame" x="10" y="37" width="220" height="27"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="220" id="XOw-0w-kIA"/>
-                            </constraints>
+                            <rect key="frame" x="10" y="37" width="301" height="27"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -54,6 +51,7 @@
                         <constraint firstItem="YcE-SL-d8l" firstAttribute="centerY" secondItem="xRx-Zq-8v1" secondAttribute="centerY" id="8mJ-hS-ITo"/>
                         <constraint firstAttribute="trailing" secondItem="YcE-SL-d8l" secondAttribute="trailing" constant="20" id="BqO-ju-F1Q"/>
                         <constraint firstItem="xRx-Zq-8v1" firstAttribute="leading" secondItem="GqY-3T-sK6" secondAttribute="leading" constant="10" id="L8D-1J-Jdv"/>
+                        <constraint firstItem="YcE-SL-d8l" firstAttribute="leading" secondItem="xRx-Zq-8v1" secondAttribute="trailing" constant="30" id="QLn-S6-R99"/>
                         <constraint firstAttribute="bottom" secondItem="xRx-Zq-8v1" secondAttribute="bottom" constant="20" id="Yf3-hm-ozZ"/>
                         <constraint firstAttribute="bottom" secondItem="HHa-ch-XUU" secondAttribute="bottom" id="kuW-hM-4BM"/>
                     </constraints>
@@ -68,6 +66,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="projectNameLabel" destination="xRx-Zq-8v1" id="OGb-qM-B21"/>
+            </connections>
             <point key="canvasLocation" x="36" y="345"/>
         </view>
     </objects>

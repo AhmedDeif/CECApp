@@ -12,9 +12,17 @@ import UIKit
 class ProjectDetailsHeaderView: UITableViewHeaderFooterView {
 
     weak var delegate: CustomHeaderDelegate?
+    var project: ProjectModel?
+    
+    @IBOutlet weak var projectNameLabel: UILabel!
+    
     
     @IBAction func moreInfoButtonTapped(_ sender: Any) {
         delegate?.didTapDetailsButton()
+    }
+    
+    func setData() {
+        self.projectNameLabel.text = project!.name
     }
 }
 

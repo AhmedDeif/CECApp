@@ -14,19 +14,17 @@ class IssueImagesCollectionViewController: UICollectionViewController {
 
     fileprivate let reuseIdentifier = "issueImageCollectionViewCell"
     fileprivate let customHeaderReuseIdentifier = "IssuePicturesCollectionReusableView"
-    fileprivate let customFooterReuseIdentifier = "IssueDetailsFooterCollectionReusableView"
+//    fileprivate let customFooterReuseIdentifier = "IssueDetailsFooterCollectionReusableView"
     fileprivate let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 60.0, right: 10.0)
     fileprivate let itemsPerRow: CGFloat = 3
     fileprivate let fullScreenImageTag = 99915
     
     var issueStatusBarExpand = false
-    
     var imagesArr = [UIImage]()
-    
+    var projectIssue: IssueModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpData()
         registerCells()
     }
 
@@ -38,8 +36,9 @@ class IssueImagesCollectionViewController: UICollectionViewController {
     func registerCells() {
         self.collectionView!.register(UINib(nibName: "IssueImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         self.collectionView!.register(UINib(nibName: customHeaderReuseIdentifier, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: customHeaderReuseIdentifier)
-        self.collectionView!.register(UINib(nibName: customFooterReuseIdentifier, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: customFooterReuseIdentifier)
+//        self.collectionView!.register(UINib(nibName: customFooterReuseIdentifier, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: customFooterReuseIdentifier)
     }
+    
     
     func setUpData() {
         imagesArr.append(#imageLiteral(resourceName: "key"))
@@ -66,6 +65,7 @@ class IssueImagesCollectionViewController: UICollectionViewController {
         imagesArr.append(#imageLiteral(resourceName: "key"))
         imagesArr.append(#imageLiteral(resourceName: "key"))
         imagesArr.append(#imageLiteral(resourceName: "key"))
+//        projectIssue?.images = imagesArr
     }
 
 
@@ -75,13 +75,13 @@ class IssueImagesCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imagesArr.count
+        return self.projectIssue?.images.count ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! IssueImageCollectionViewCell
-        cell.imageView.image = imagesArr[indexPath.row]
-    
+        cell.indexPath = indexPath
+        cell.setData(imageURL: self.projectIssue!.images[indexPath.row].path, indexPath: indexPath)
         return cell
     }
     
@@ -90,12 +90,14 @@ class IssueImagesCollectionViewController: UICollectionViewController {
         switch kind {
         case UICollectionElementKindSectionHeader:
             let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: customHeaderReuseIdentifier, for: indexPath) as! IssuePicturesCollectionReusableView
+            reusableview.setData(issue: projectIssue!)
             return reusableview
 
-        case UICollectionElementKindSectionFooter:
-            let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: customFooterReuseIdentifier, for: indexPath) as! IssueDetailsFooterCollectionReusableView
-            reusableView.viewController = self
-            return reusableView
+//        case UICollectionElementKindSectionFooter:
+//            let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: customFooterReuseIdentifier, for: indexPath) as! IssueDetailsFooterCollectionReusableView
+//            reusableView.viewController = self
+//            reusableView.setData(issue: projectIssue!)
+//            return reusableView
         default:  fatalError("Unexpected element kind")
         }
         
@@ -108,8 +110,8 @@ class IssueImagesCollectionViewController: UICollectionViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "imageManipulationViewController") as! ImageViewController
-        let img = imagesArr[indexPath.row]
-        controller.image = img
+        let cell = self.collectionView?.cellForItem(at: indexPath) as! IssueImageCollectionViewCell
+        controller.image = cell.imageView.image
         self.navigationController?.pushViewController(controller, animated: true)
         return false
     }
@@ -146,13 +148,13 @@ extension IssueImagesCollectionViewController : UICollectionViewDelegateFlowLayo
         return CGSize(width: collectionView.frame.width, height: 165)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        if self.issueStatusBarExpand {
-            return CGSize(width: collectionView.frame.width, height: 140)
-        }
-        return CGSize(width: collectionView.frame.width, height: 42)
-        
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+//        if self.issueStatusBarExpand {
+//            return CGSize(width: collectionView.frame.width, height: 140)
+//        }
+//        return CGSize(width: collectionView.frame.width, height: 42)
+//        
+//    }
     
     //3
     func collectionView(_ collectionView: UICollectionView,
@@ -175,8 +177,7 @@ extension IssueImagesCollectionViewController: showIssueStatusDetailsProtocol {
     func toggleFooterHeight() {
         self.issueStatusBarExpand = !self.issueStatusBarExpand
         self.collectionView!.collectionViewLayout.invalidateLayout()
-        self.collectionView?.scrollToItem(at: IndexPath(item: imagesArr.count-1, section: 0), at: UICollectionViewScrollPosition.top, animated: true)
-//        self.collectionView?.scrollToItem(at: imagesArr.count, at: , animated: <#T##Bool#>)
+        self.collectionView?.scrollToItem(at: IndexPath(item: (self.projectIssue?.images.count)!-1, section: 0), at: UICollectionViewScrollPosition.top, animated: true)
     }
     
 }

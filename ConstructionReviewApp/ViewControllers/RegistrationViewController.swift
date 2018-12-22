@@ -64,6 +64,8 @@ class RegistrationViewController: UIViewController {
         passwordTextField.tag = 2
         confirmPasswordTextfield.delegate = self
         confirmPasswordTextfield.tag = 3
+        confirmPasswordTextfield.isSecureTextEntry = true
+        passwordTextField.isSecureTextEntry = true
     }
     
     
@@ -134,7 +136,6 @@ class RegistrationViewController: UIViewController {
                 self.showLoadingIndicator()
                 viewModel.registerUser(token: accessKeyTextfield.text!, password: passwordTextField.text!, confirmPassword: confirmPasswordTextfield.text!, completion: { () in
                     self.hideLoadingIndicator()
-                    
                     let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "projectsNavigationController") as! UINavigationController
                     self.present(viewController, animated: true, completion: nil)

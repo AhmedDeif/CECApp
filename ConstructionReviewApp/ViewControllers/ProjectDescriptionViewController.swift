@@ -14,6 +14,7 @@ class ProjectDescriptionViewController: UIViewController {
     let cellReuseIdentifier = "ProjectDescriptionTableViewCell"
     let customHeaderResuseIdentifier = "ProjectDescriptionCustomHeaderView"
     var additonalHeight: CGFloat?
+    var project: ProjectModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,12 @@ class ProjectDescriptionViewController: UIViewController {
         self.projectDescriptionTableView.register(UINib(nibName: customHeaderResuseIdentifier, bundle: nil), forHeaderFooterViewReuseIdentifier: customHeaderResuseIdentifier)
     }
     
-
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let firstTouch = touches.first
+        if firstTouch?.view == self.view {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
 
 }
 
@@ -49,17 +55,20 @@ extension ProjectDescriptionViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return self.project?.employees.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! ProjectDescriptionTableViewCell
+        cell.setData(employee: self.project!.employees[indexPath.row])
+        cell.parentViewController = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: customHeaderResuseIdentifier) as! ProjectDescriptionCustomHeaderView
         view.tableViewDelegate = self
+        view.setData(project: self.project!)
         return view
     }
     

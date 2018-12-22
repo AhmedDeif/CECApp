@@ -18,13 +18,26 @@ class ReportIssueViewController: UIViewController,issueImageDeletionProtocol {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var issueDescriptionTextView: UITextView!
     
+    @IBOutlet weak var reportIssueButton: UIButton!
+    
     let collectionViewCellReuseIdentifier = "reportIssueCollectionViewCell"
     var issueImages = [UIImage]()
+    
     let issueTypes = ["", "type 1", "type 2", "type 3", "type 4"]
+    
+    var constructionIssueTypes = ["", "misbehavior", "quality non-conformance", "time delay", "change response delay", "safety concern", "maintenance issues"]
+    var supportIssueTypes = ["" ,"Finishes", "Sanitary", "Electrical", "Fire Fighting", "HVAC", "Elevators"]
     let isseuTypePickerView = UIPickerView()
     weak var activeTextView: UITextView?
     var scrollViewLastOffset: CGPoint?
 
+    var textViewPlaceholderActive = true
+    let textViewPlaceholderText = "Issue description"
+    var projectType: ProjectModel.projectType?
+    var projectId: String?
+    
+    let viewModel = IssueCreationViewModel()
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,15 +55,15 @@ class ReportIssueViewController: UIViewController,issueImageDeletionProtocol {
         setData()
         styleView()
         setPickerInput()
+        setTextViewKeyboard()
         issueTypeSelectionLabel.delegate = self
         issueDescriptionTextView.delegate = self
         self.scrollView.delegate = self
-        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ReportIssueViewController.dismissKeyboard))
-        
         tap.cancelsTouchesInView = false
-        
         view.addGestureRecognizer(tap)
+        viewModel.setProjectId(projectId: self.projectId!)
+        viewModel.projectType = self.projectType
     }
     
 
@@ -66,10 +79,21 @@ class ReportIssueViewController: UIViewController,issueImageDeletionProtocol {
         issueImages.append(#imageLiteral(resourceName: "key"))
         issueImages.append(#imageLiteral(resourceName: "key"))
         issueImages.append(#imageLiteral(resourceName: "key"))
+        issueImages.append(#imageLiteral(resourceName: "key"))
+        issueImages.append(#imageLiteral(resourceName: "key"))
+        issueImages.append(#imageLiteral(resourceName: "key"))
+        issueImages.append(#imageLiteral(resourceName: "key"))
+        issueImages.append(#imageLiteral(resourceName: "key"))
+        issueImages.append(#imageLiteral(resourceName: "key"))
+        issueImages.append(#imageLiteral(resourceName: "key"))
+        issueImages.append(#imageLiteral(resourceName: "key"))
+        issueImages.append(#imageLiteral(resourceName: "key"))
     }
+    
     
     func styleView() {
         self.issueReportView.layer.cornerRadius = 5
+        self.reportIssueButton.layer.cornerRadius = self.reportIssueButton.frame.height / 2
     }
 
     
@@ -87,11 +111,30 @@ class ReportIssueViewController: UIViewController,issueImageDeletionProtocol {
         isseuTypePickerView.delegate = self
         isseuTypePickerView.dataSource = self
     }
+    
+    func setTextViewKeyboard() {
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ReportIssueViewController.KeyboardDoneButtonHandler))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        self.issueDescriptionTextView.inputAccessoryView = toolBar
+    }
 
+    
     
     @objc func pickerSelection() {
         issueTypeSelectionLabel.resignFirstResponder()
     }
+    
+    
+    @objc func KeyboardDoneButtonHandler() {
+        issueDescriptionTextView.resignFirstResponder()
+    }
+    
     
     @IBAction func addImageButtonClick(_ sender: Any) {
         let cameraHandler = CameraHandler.shared()
@@ -151,13 +194,44 @@ class ReportIssueViewController: UIViewController,issueImageDeletionProtocol {
         self.scrollView.isScrollEnabled = true
     }
     
-
-
-}
-
-extension ReportIssueViewController: UICollectionViewDelegate {
+    func issueFieldsValid() -> Bool {
+        if textViewPlaceholderActive {
+            self.view.makeToast("You must add issue description")
+            return false
+        }
+        
+        if !issueTypeSelectionLabel.hasText {
+            self.view.makeToast("Please select your issue type")
+            return false
+        }
+        return true
+    }
     
+    
+    @IBAction func reportIssueTapped(_ sender: Any) {
+        if issueFieldsValid() {
+            viewModel.issueType = self.issueTypeSelectionLabel.text!
+            viewModel.issueDescription = self.issueDescriptionTextView.text!
+            viewModel.issueImages = self.issueImages
+            self.showLoadingIndicator()
+            viewModel.createIssue { (error) in
+                self.hideLoadingIndicator()
+                if let errorModel = error {
+                    self.view.makeToast(error?.message)
+                }
+                else {
+                    let viewControllersStack = self.navigationController!.viewControllers
+                    let parent = viewControllersStack[viewControllersStack.count - 2] as! IssueTableViewController
+                    parent.issuePosted = true
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+    }
+    
+
 }
+
 
 extension ReportIssueViewController: UICollectionViewDataSource {
     
@@ -175,13 +249,24 @@ extension ReportIssueViewController: UICollectionViewDataSource {
     }
 }
 
+
+
 extension ReportIssueViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        issueTypeSelectionLabel.text = issueTypes[row]
+        switch self.projectType! {
+        case .Construction:
+            issueTypeSelectionLabel.text = constructionIssueTypes[row]
+        case .Support:
+            issueTypeSelectionLabel.text = supportIssueTypes[row]
+        default:
+            issueTypeSelectionLabel.text = issueTypes[row]
+        }
     }
     
 }
+
+
 
 extension ReportIssueViewController: UIPickerViewDataSource {
     
@@ -190,23 +275,54 @@ extension ReportIssueViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if self.projectType == .Construction {
+            return constructionIssueTypes.count
+        }
+        if self.projectType == .Support {
+            return supportIssueTypes.count
+        }
         return issueTypes.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if self.projectType == .Construction {
+            return constructionIssueTypes[row]
+        }
+        if self.projectType == .Support {
+            return supportIssueTypes[row]
+        }
         return issueTypes[row]
     }
     
 }
 
 
+
+
 extension ReportIssueViewController: UITextViewDelegate {
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        if textViewPlaceholderActive {
+            self.textViewPlaceholderActive = false
+            self.issueDescriptionTextView.text = ""
+        }
         self.activeTextView = textView
         return true
     }
     
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        if !issueDescriptionTextView.hasText {
+            self.textViewPlaceholderActive = true
+            self.issueDescriptionTextView.text = self.textViewPlaceholderText
+            return true
+        }
+        textView.resignFirstResponder()
+        self.activeTextView = nil
+        return true
+    }
+
 }
+
+
 
 extension ReportIssueViewController: UITextFieldDelegate {
     
@@ -221,7 +337,6 @@ extension ReportIssueViewController: UITextFieldDelegate {
                 self.isseuTypePickerView.selectRow(0, inComponent: 0, animated: false)
             }
         }
-        
         return true
     }
     

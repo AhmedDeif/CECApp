@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MessageUI
+
 
 class ProjectDescriptionTableViewCell: UITableViewCell {
 
@@ -16,17 +18,21 @@ class ProjectDescriptionTableViewCell: UITableViewCell {
     @IBOutlet weak var employeeEmailLabel: UILabel!
     @IBOutlet weak var empolyeeName: UILabel!
     
+    weak var parentViewController: UIViewController?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         customizeView()
-        // Initialization code
+        addListeners()
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
+    
     
     func customizeView() {
         self.corneredView.layer.cornerRadius = 5.0
@@ -37,4 +43,61 @@ class ProjectDescriptionTableViewCell: UITableViewCell {
         self.selectionStyle = .none
     }
     
+    
+    func addListeners() {
+        let emailGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ProjectDescriptionTableViewCell.sendEmailToEmployee))
+        self.employeeEmailLabel.isUserInteractionEnabled = true
+        self.employeeEmailLabel.addGestureRecognizer(emailGestureRecognizer)
+        
+        let phoneGetsureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ProjectDescriptionTableViewCell.callEmployee))
+        self.employeeContactNumberLabel.isUserInteractionEnabled = true
+        self.employeeContactNumberLabel.addGestureRecognizer(phoneGetsureRecognizer)
+    }
+    
+    func setData(employee: EmployeeModel) {
+        let stringAttributes = [ NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
+        self.employeeEmailLabel.attributedText = NSAttributedString(string: employee.email, attributes: stringAttributes)
+        self.employeeTitleLabel.text = employee.employeeRoleString()
+        self.employeeContactNumberLabel.attributedText = NSAttributedString(string: employee.phone, attributes: stringAttributes)
+        self.empolyeeName.text = employee.name
+    }
+    
+    
+    @objc func sendEmailToEmployee(sender:UITapGestureRecognizer) {
+        sendEmail()
+        print("Sending an email to employee")
+    }
+    
+    
+    @objc func callEmployee(sender:UITapGestureRecognizer) {
+        print("calling the designated employee with number: \(self.employeeContactNumberLabel.text!)")
+//        UIApplication.sharedApplication.openURL(NSURL(string: "tel://1234567890"))
+        UIApplication.shared.open(URL(string: "tel://\(self.employeeContactNumberLabel.text!)")!, options: [:], completionHandler: nil)
+    }
+    
+
 }
+
+
+extension ProjectDescriptionTableViewCell: MFMailComposeViewControllerDelegate {
+    
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let email = self.employeeEmailLabel.text ?? ""
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
+            mail.setToRecipients([email])
+            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+            mail.mailComposeDelegate = self
+            parentViewController?.present(mail, animated: true)
+        }
+    }
+    
+}
+
+

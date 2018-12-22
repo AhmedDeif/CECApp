@@ -10,9 +10,9 @@ import UIKit
 
 class IssueTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var issueDescriptionLabel: UILabel!
     @IBOutlet weak var cornerView: UIView!
-    @IBOutlet weak var issueNameLabel: UILabel!
-    @IBOutlet weak var issueCreatorLabel: UILabel!
+    @IBOutlet weak var issueTypeLabel: UILabel!
     @IBOutlet weak var issueStatusLabel: UILabel!
     @IBOutlet weak var issueDateLabel: UILabel!
     let cornerRadius: CGFloat = 5
@@ -33,5 +33,12 @@ class IssueTableViewCell: UITableViewCell {
         self.selectionStyle = .none
     }
 
+    func setCellData(issue: IssueModel) {
+        self.issueTypeLabel.text = issue.type
+        self.issueDescriptionLabel.text = issue.description
+        self.issueStatusLabel.text = issue.status
+        self.issueDateLabel.text = issue.getDate()
+        
+    }
     
 }

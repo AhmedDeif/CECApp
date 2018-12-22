@@ -23,7 +23,8 @@ class LoginViewController: UIViewController {
     weak var activeTextView: UITextField?
     var viewModel = LoginViewModel()
     
-    
+    var shouldPasswordResetMessage = false
+    var passwordResetMessage: String = ""
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,6 +38,9 @@ class LoginViewController: UIViewController {
         styleView()
         passwordTextfield.delegate = self
         emailTextfield.delegate = self
+        if self.shouldPasswordResetMessage {
+            self.view.makeToast(self.passwordResetMessage)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,6 +63,7 @@ class LoginViewController: UIViewController {
         passwordContainerView.layer.masksToBounds = true
         emailErrorImage.isHidden = true
         passwordErrorImage.isHidden = true
+        passwordTextfield.isSecureTextEntry = true
     }
     
     
@@ -114,14 +119,13 @@ class LoginViewController: UIViewController {
             viewModel.login(username: emailTextfield.text!, password: passwordTextfield.text!) { (loginAuthorised, error) in
                 self.stopAnimating()
                 if loginAuthorised {
-                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "projectsNavigationController") as! UINavigationController
-                    self.present(viewController, animated: true, completion: nil)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+                    self.present(vc, animated: true, completion: nil)
                 }
                 else {
                     self.showError(textfield: self.passwordTextfield, error: error!)
                 }
-                
             }
         }
     }
@@ -137,15 +141,18 @@ extension LoginViewController: UITextFieldDelegate {
         return true
     }
     
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.validateFields()
         textField.resignFirstResponder()
         return true
     }
     
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.activeTextView = nil
     }
+    
     
     func validateFields() -> Bool {
         var allFieldsAreValid = true

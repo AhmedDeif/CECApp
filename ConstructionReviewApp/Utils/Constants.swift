@@ -14,6 +14,29 @@ struct API {
     static let tokenType = ""
     static let validateToken = baseURL + "/api/validateToken"
     static let login = baseURL + "/api/login"
+    static let getProjects = baseURL + "/api/projects"
+    static let imagesURLPrefix = baseURL + "/images/issues"
+    static let forgotPassword = baseURL + "/api/forgot"
+//    @POST("forgot")
+    
+    static let closeIssue = baseURL + ""
+//    @POST("issues/{issueId}/close")
+    
+    static let rateIssue = baseURL + ""
+//    @POST("issues/{issueId}/rate")
+    
+    
+    static let getProjectIssues = baseURL + "/api/issues/{projectId}"
+    //    @GET("issues/{projectId}")
+    
+    static let postProjectIssue = baseURL + "/api/issues/{projectId}"
+//    @Multipart
+//    @POST("issues/{projectId}")
+//    Call<ResponseBody> reportIssue(@Path("projectId") int projectID,
+//    @Part("type") RequestBody type,
+//    @Part("description") RequestBody description,
+//    @Part ArrayList<MultipartBody.Part> images);
+
 }
 
 struct constants {

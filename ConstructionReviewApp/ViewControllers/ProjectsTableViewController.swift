@@ -12,11 +12,48 @@ class ProjectsTableViewController: UITableViewController {
     
     
     let cellReuseIdentifier = "ProjectTableViewCell"
+    var viewModel = ProjectsViewModel()
+    var projectList: [ProjectModel] = [ProjectModel]()
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
+        fetchData()
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchData()
+    }
+    
+    
+    func fetchData(sender: UIRefreshControl? = nil) {
+        if NetworkManager.isConnectedToInternet() {
+            if sender == nil {
+                self.startAnimating()
+            }
+            viewModel.getListOfProjects { error in
+                (sender == nil) ? self.stopAnimating() : sender?.endRefreshing()
+                self.stopAnimating()
+                if error != nil {
+                    self.view.makeToast(error!.message)
+                }
+                else {
+                    // ToDo: update Table
+                    self.projectList = self.viewModel.projects
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        else {
+            self.view.makeToast("You are not connected to the internet")
+        }
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -37,6 +74,12 @@ class ProjectsTableViewController: UITableViewController {
         self.tableView.register(UINib(nibName: cellReuseIdentifier, bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
     }
     
+    
+    @IBAction func refreshTable(_ sender: UIRefreshControl) {
+        fetchData(sender: sender)
+    }
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,14 +87,14 @@ class ProjectsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return projectList.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! ProjectTableViewCell
-
+        cell.setData(project: self.projectList[indexPath.row])
         return cell
     }
     
@@ -62,10 +105,10 @@ class ProjectsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Launch issue VC
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "issueTableViewController")
+        let controller = storyboard.instantiateViewController(withIdentifier: "issueTableViewController") as! IssueTableViewController
+        controller.project = self.projectList[indexPath.row]
         self.navigationController?.pushViewController(controller, animated: true)
         
     }
-
 
 }

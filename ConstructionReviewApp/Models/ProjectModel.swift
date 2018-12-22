@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ProjectModel {
+struct ProjectModel: Codable {
     
     var id: Int
     var name: String
@@ -17,46 +17,74 @@ struct ProjectModel {
     var startAt: String
     var endAt: String
     var employees: [EmployeeModel]
-//    var employees
+    
+    enum projectType {
+        case Construction
+        case Support
+    }
     
     
+    func getProjectManager() -> String {
+        for employee in self.employees {
+            if employee.role == "PM" {
+                return employee.name
+            }
+        }
+        return "No manager allocated"
+    }
     
-//    {
-//    "id": 2,
-//    "name": "CIB new capital branch",
-//    "description": "The interior construction of CIB branch in New capital. This is the first branch in this area. The project has three main clients who should be cable to add issues to this project.",
-//    "phase": "CONSTRUCTION",
-//    "startAt": "2018-06-16T00:00:00.000Z",
-//    "endAt": "2019-04-10T00:00:00.000Z",
-//    "employees": [
-//    {
-//    "id": 1,
-//    "name": "sha3ban",
-//    "email": "sha3ban@sh3ban.com",
-//    "phone": "101010100101010",
-//    "role": "PM",
-//    "EmployeeProjects": {
-//    "id": 4,
-//    "employeeId": 1,
-//    "projectId": 2
-//    }
-//    },
-//    {
-//    "id": 2,
-//    "name": "Mohamad Badr",
-//    "email": "badr@badr.com",
-//    "phone": "110101010101010",
-//    "role": "TM",
-//    "EmployeeProjects": {
-//    "id": 3,
-//    "employeeId": 2,
-//    "projectId": 2
-//    }
-//    }
-//    ]
-//    }
+    func getProjectEmployees() -> [EmployeeModel] {
+        return self.employees
+    }
     
     
+    func getStartDate(withFormat: String = "dd-MM-yy") -> String {
+        let dateFormatter = DateFormatter()
+        let index = self.startAt.index(of: ".")
+        var newDate: String = ""
+        if index != nil {
+            newDate = String(self.startAt.prefix(upTo: index!))
+        }
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let date = dateFormatter.date(from: newDate)
+        dateFormatter.dateFormat = withFormat
+        let dateString = dateFormatter.string(from: date!)
+        return dateString
+    }
+    
+    
+    func getEndDate(withFormat: String = "dd-MM-yy") -> String {
+        let dateFormatter = DateFormatter()
+        let index = self.endAt.index(of: ".")
+        var newDate: String = ""
+        if index != nil {
+            newDate = String(self.endAt.prefix(upTo: index!))
+        }
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        let date = dateFormatter.date(from: newDate)
+        dateFormatter.dateFormat = withFormat
+        let dateString = dateFormatter.string(from: date!)
+        return dateString
+    }
+    
+    
+    func getProjectPhase() -> String {
+        return self.phase.lowercased()
+    }
+    
+    func getProjectType() -> projectType {
+        if getProjectPhase() == "SUPPORT" {
+            return projectType.Support
+        }
+        return projectType.Construction
+    }
+}
+
+struct ProjectResponseModel: Codable {
+    var error: Bool
+    var result: [ProjectModel]
 }
 
 

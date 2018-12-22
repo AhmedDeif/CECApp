@@ -19,6 +19,7 @@ class IssueDetailsFooterCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var buttonsContainerView: UIView!
     @IBOutlet weak var viewHeight: NSLayoutConstraint!
     
+    var issue: IssueModel?
     weak var viewController: IssueImagesCollectionViewController?
     
     let minimisedHeight: CGFloat = 38.0
@@ -50,6 +51,11 @@ class IssueDetailsFooterCollectionReusableView: UICollectionReusableView {
         let cornerRadius: CGFloat = self.reopenIssueButton.frame.height / 2.0
         self.reopenIssueButton.layer.cornerRadius = cornerRadius
         self.closeIssueButton.layer.cornerRadius = cornerRadius
+    }
+    
+    func setData(issue: IssueModel) {
+        self.issue = issue
+        
     }
     
 }

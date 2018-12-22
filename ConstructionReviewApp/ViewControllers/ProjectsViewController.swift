@@ -10,10 +10,14 @@ import UIKit
 
 class ProjectsViewController: UIViewController {
 
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.view.setBackgroudAsGradient()
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,7 +31,7 @@ class ProjectsViewController: UIViewController {
         NetworkManager.shared().deregisterAccessToken()
         let storybaord = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storybaord.instantiateViewController(withIdentifier: "LoginViewController")
-        self.present(viewController, animated: true, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+        self.present(viewController, animated: true, completion: nil)
     }
     
 }

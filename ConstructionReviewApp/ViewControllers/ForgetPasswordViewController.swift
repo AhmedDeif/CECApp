@@ -17,6 +17,7 @@ class ForgetPasswordViewController: UIViewController {
     @IBOutlet weak var errorImage: UIImageView!
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var resetPasswordButton: UIButton!
+    let viewModel: ForgotPasswordViewModel = ForgotPasswordViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +37,44 @@ class ForgetPasswordViewController: UIViewController {
         errorImage.isHidden = true
         contentView.layer.cornerRadius = 5
     }
-
-    @IBAction func resetPasswordAction(_ sender: Any) {
-        
-    }
     
+    func validateField() -> Bool {
+        if !emailTextfield.hasText {
+            errorImage.isHidden = false
+            self.view.makeToast("The email field cannot be empty")
+            return false
+        }
+        else {
+            errorImage.isHidden = true
+        }
+        if !emailTextfield.text!.isValidEmail() {
+            errorImage.isHidden = false
+            self.view.makeToast("Invalid email format")
+            return false
+        }
+        else {
+            errorImage.isHidden = true
+        }
+        return true
+    }
 
+    
+    @IBAction func resetPasswordAction(_ sender: Any) {
+        if validateField() {
+            self.showLoadingIndicator()
+            viewModel.forgetUserPassword(email: emailTextfield.text!) { (successful, error) in
+                self.hideLoadingIndicator()
+                if successful {
+                    let storybaord = UIStoryboard(name: "Main", bundle: nil)
+                    let viewController = storybaord.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+                    viewController.shouldPasswordResetMessage = true
+                    viewController.passwordResetMessage = error!.message
+                    self.present(viewController, animated: true, completion: nil)
+                }
+                else {
+                    self.view.makeToast(error?.message)
+                }
+            }
+        }
+    }
 }

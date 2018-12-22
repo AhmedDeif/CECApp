@@ -10,6 +10,9 @@ import UIKit
 
 class ProjectTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var projectStatus: UILabel!
+    @IBOutlet weak var endDate: UILabel!
+    @IBOutlet weak var startDate: UILabel!
     @IBOutlet weak var corneredView: UIView!
     @IBOutlet weak var projectOwnerLabel: UILabel!
     @IBOutlet weak var projectNameLabel: UILabel!
@@ -32,6 +35,15 @@ class ProjectTableViewCell: UITableViewCell {
         self.corneredView.layer.cornerRadius = cornerRadius
         self.selectionStyle = .none
     }
+    
+    func setData(project: ProjectModel) {
+        self.projectOwnerLabel.text = project.getProjectManager()
+        self.projectNameLabel.text = project.name
+        self.startDate.text = project.getStartDate()
+        self.endDate.text = project.getEndDate()
+        self.projectStatus.text = project.getProjectPhase()
+    }
+    
 
     
 }

@@ -73,12 +73,9 @@ class RegistrationViewModel {
             NetworkManager.shared().request(API.validateToken, method: .post, parameters: paramters, encoding: JSONEncoding.default).responseJSON { response in
                 switch response.result {
                     
-                case let .success(value):
-                    print("Token unregistered successfully")
+                case .success(_):
                     if let jsonData = response.data {
                         let decodedObj = try? JSONDecoder().decode(ValidateToken.self, from: jsonData)
-                        print(jsonData)
-                        print(decodedObj)
                         self.token = decodedObj?.token
                     }
                     self.onSuccess()
@@ -86,8 +83,7 @@ class RegistrationViewModel {
                         completion!()
                     }
                     
-                case let .failure(error):
-                    print("Failed to unregister token.")
+                case .failure(_):
                     self.onFailure()
                     if completion != nil {
                         completion!()

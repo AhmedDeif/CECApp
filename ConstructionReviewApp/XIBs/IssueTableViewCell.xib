@@ -85,10 +85,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cornerView" destination="ER1-qz-hbC" id="T4i-bX-0cO"/>
-                <outlet property="issueCreatorLabel" destination="CO8-2l-hK2" id="8ob-Hr-nZS"/>
                 <outlet property="issueDateLabel" destination="ChV-bD-XD3" id="Cam-tD-EOn"/>
-                <outlet property="issueNameLabel" destination="cxg-9n-Kcz" id="w0o-z8-19j"/>
+                <outlet property="issueDescriptionLabel" destination="CO8-2l-hK2" id="HyV-zD-K17"/>
                 <outlet property="issueStatusLabel" destination="sPZ-xF-prK" id="Rl2-RN-mBh"/>
+                <outlet property="issueTypeLabel" destination="cxg-9n-Kcz" id="R0c-YO-qdm"/>
             </connections>
             <point key="canvasLocation" x="46" y="48.5"/>
         </tableViewCell>

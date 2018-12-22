@@ -137,6 +137,7 @@
                 <outlet property="projectEndDateLabel" destination="vaD-2K-Oku" id="c0e-rs-TcO"/>
                 <outlet property="projectPhaseLabel" destination="vdl-97-6ee" id="vlM-qK-Bye"/>
                 <outlet property="projectStartDateLabel" destination="8Bb-W1-r2A" id="1nn-Ql-TGU"/>
+                <outlet property="projectTitleLabel" destination="id9-PX-aud" id="KyW-SC-BvG"/>
                 <outlet property="readMoreButton" destination="Lt3-tO-jXD" id="L5T-vD-Kdj"/>
             </connections>
             <point key="canvasLocation" x="37.5" y="20"/>
