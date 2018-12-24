@@ -36,7 +36,7 @@ class ReportIssueViewController: UIViewController,issueImageDeletionProtocol {
     var projectType: ProjectModel.projectType?
     var projectId: String?
     
-    let viewModel = IssueCreationViewModel()
+    let viewModel = IssueViewModel()
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,7 +52,6 @@ class ReportIssueViewController: UIViewController,issueImageDeletionProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setData()
         styleView()
         setPickerInput()
         setTextViewKeyboard()
@@ -70,26 +69,7 @@ class ReportIssueViewController: UIViewController,issueImageDeletionProtocol {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
-    
-    
-    func setData() {
-        issueImages.append(#imageLiteral(resourceName: "key"))
-        issueImages.append(#imageLiteral(resourceName: "key"))
-        issueImages.append(#imageLiteral(resourceName: "key"))
-        issueImages.append(#imageLiteral(resourceName: "key"))
-        issueImages.append(#imageLiteral(resourceName: "key"))
-        issueImages.append(#imageLiteral(resourceName: "key"))
-        issueImages.append(#imageLiteral(resourceName: "key"))
-        issueImages.append(#imageLiteral(resourceName: "key"))
-        issueImages.append(#imageLiteral(resourceName: "key"))
-        issueImages.append(#imageLiteral(resourceName: "key"))
-        issueImages.append(#imageLiteral(resourceName: "key"))
-        issueImages.append(#imageLiteral(resourceName: "key"))
-        issueImages.append(#imageLiteral(resourceName: "key"))
-        issueImages.append(#imageLiteral(resourceName: "key"))
-    }
-    
+
     
     func styleView() {
         self.issueReportView.layer.cornerRadius = 5
@@ -216,7 +196,7 @@ class ReportIssueViewController: UIViewController,issueImageDeletionProtocol {
             self.showLoadingIndicator()
             viewModel.createIssue { (error) in
                 self.hideLoadingIndicator()
-                if let errorModel = error {
+                if error != nil {
                     self.view.makeToast(error?.message)
                 }
                 else {

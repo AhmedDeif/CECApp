@@ -14,7 +14,7 @@ class ProjectsTableViewController: UITableViewController {
     let cellReuseIdentifier = "ProjectTableViewCell"
     var viewModel = ProjectsViewModel()
     var projectList: [ProjectModel] = [ProjectModel]()
-    
+    var issueRated: Bool = false
     
     
     
@@ -28,6 +28,13 @@ class ProjectsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchData()
+        if UserDefaults.standard.bool(forKey: UserDefaults.Keys.mustRateIssueFlag.rawValue) {
+            self.showRateIssueViewController()
+        }
+        if self.issueRated {
+            self.issueRated = false
+            self.view.makeToast("Your issue has been rated successfully")
+        }
     }
     
     

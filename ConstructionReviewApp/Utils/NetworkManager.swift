@@ -53,7 +53,9 @@ class AccessTokenAdapter: RequestAdapter {
         API.getProjectIssues.replacingOccurrences(of: "{projectId}", with: ""),
         API.forgotPassword,
         API.postProjectIssue.replacingOccurrences(of: "{projectId}", with: ""),
-        API.imagesURLPrefix
+        API.imagesURLPrefix,
+        API.closeIssue.replacingOccurrences(of: "{issueId}/close", with: ""),
+        API.rateIssue.replacingOccurrences(of: "{issueId}/rate", with: "")
     ]
     
     init(accessToken: String) {

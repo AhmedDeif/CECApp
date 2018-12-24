@@ -49,7 +49,7 @@
             </objects>
             <point key="canvasLocation" x="2018.4000000000001" y="132.68365817091455"/>
         </scene>
-        <!--Title-->
+        <!--Issues-->
         <scene sceneID="MAI-3l-DVd">
             <objects>
                 <tableViewController storyboardIdentifier="issueTableViewController" id="k2t-uT-zoJ" customClass="IssueTableViewController" customModule="ConstructionReviewApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -65,7 +65,7 @@
                             <outlet property="delegate" destination="k2t-uT-zoJ" id="yGD-pa-Qah"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="9Tr-CG-aqX">
+                    <navigationItem key="navigationItem" title="Issues" id="9Tr-CG-aqX">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="E98-ia-N1f">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -74,6 +74,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Gqs-sw-FMw">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="refreshTable:" destination="k2t-uT-zoJ" eventType="valueChanged" id="wDD-TL-Pr2"/>
@@ -100,6 +101,7 @@
                         </connections>
                     </tableView>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="6eZ-TM-LCV">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="refreshTable:" destination="Kck-er-p3A" eventType="valueChanged" id="6hI-Ug-Hv0"/>
@@ -1189,6 +1191,9 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
                                                 <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="minTouchRating">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36k-Yg-tw6">
@@ -1240,8 +1245,9 @@
                         <viewLayoutGuide key="safeArea" id="g9j-Mg-tw9"/>
                     </view>
                     <connections>
+                        <outlet property="contentview" destination="91S-WL-mgY" id="jrm-RL-g98"/>
                         <outlet property="issueDescriptionLabel" destination="yeh-JA-Ty5" id="qNY-ZC-flG"/>
-                        <outlet property="issueTitleLabel" destination="GX5-dI-Dx1" id="I8Y-Uk-zor"/>
+                        <outlet property="issueTitleLabel" destination="GX5-dI-Dx1" id="BDY-KR-khR"/>
                         <outlet property="ratingView" destination="Iwb-or-15I" id="3Pz-4V-LS9"/>
                         <outlet property="submitButton" destination="36k-Yg-tw6" id="yEF-rc-9q9"/>
                     </connections>

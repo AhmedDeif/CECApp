@@ -30,6 +30,7 @@ class ForgetPasswordViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
     func styleView() {
         textfieldContainerView.layer.cornerRadius = 5
         textfieldContainerView.layer.masksToBounds = true
@@ -37,6 +38,14 @@ class ForgetPasswordViewController: UIViewController {
         errorImage.isHidden = true
         contentView.layer.cornerRadius = 5
     }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let firstTouch = touches.first
+        if firstTouch?.view != self.contentView {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+
     
     func validateField() -> Bool {
         if !emailTextfield.hasText {

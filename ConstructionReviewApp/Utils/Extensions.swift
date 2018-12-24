@@ -92,6 +92,25 @@ extension UIViewController: NVActivityIndicatorViewable {
     func hideLoadingIndicator() {
         stopAnimating()
     }
+    
+    func showRatingSuccessfulMessage() {
+        self.view.makeToast("You have successfully rated the issue")
+    }
+    
+    
+    func showRateIssueViewController() {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let rateViewController = storyboard.instantiateViewController(withIdentifier: "RatingViewController") as! RatingViewController
+        let issueToRate = UserDefaults.standard.integer(forKey: UserDefaults.Keys.mustRateIssue.rawValue)
+        let issueProject = UserDefaults.standard.integer(forKey: UserDefaults.Keys.mustRateIssueProject.rawValue)
+        let issueTitle = UserDefaults.standard.string(forKey: UserDefaults.Keys.issueTitle.rawValue)
+        let issueDescription = UserDefaults.standard.string(forKey: UserDefaults.Keys.issueDescription.rawValue)
+        rateViewController.issueId = issueToRate
+        rateViewController.projectId = issueProject
+        rateViewController.issueDescription = issueDescription
+        rateViewController.issueTitle = issueTitle
+        self.present(rateViewController, animated: true, completion: nil)
+    }
 }
 
 extension UserDefaults {
@@ -99,6 +118,11 @@ extension UserDefaults {
         case TokenKey = "Token"
         case isLoggedIn = "isLoggedIn"
         case passwordReset = "passwordReset"
+        case mustRateIssue = "mustRateIssueWithId"
+        case mustRateIssueProject = "mustRateIssueWithIdInProject"
+        case mustRateIssueFlag = "mustRateIssueWithIdFlag"
+        case issueTitle = "issueTitle"
+        case issueDescription = "issueDescription"
     }
 }
 

@@ -19,10 +19,10 @@ struct API {
     static let forgotPassword = baseURL + "/api/forgot"
 //    @POST("forgot")
     
-    static let closeIssue = baseURL + ""
+    static let closeIssue = baseURL + "/api/issues/{issueId}/close"
 //    @POST("issues/{issueId}/close")
     
-    static let rateIssue = baseURL + ""
+    static let rateIssue = baseURL + "/api/issues/{issueId}/rate"
 //    @POST("issues/{issueId}/rate")
     
     

@@ -18,6 +18,9 @@ class IssueTableViewController: UITableViewController {
     var project: ProjectModel?
     var projectIssues: [IssueModel] = [IssueModel]()
     var issuePosted: Bool = false
+    var closedIssue = false
+    var issueReopend = false
+    var issueRated = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +31,38 @@ class IssueTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if self.issuePosted {
+            self.issuePosted = false
             fetchData() {
                 self.view.makeToast("Your issue has been posted successfully")
             }
         }
+        if self.issueReopend {
+            self.issueReopend = false
+            fetchData() {
+                self.view.makeToast("Your issue has been re-opened successfully")
+            }
+        }
+
+        if self.closedIssue {
+            self.closedIssue = false
+            fetchData() {
+                self.view.makeToast("Your issue has been closed successfully")
+            }
+        }
+        
+        if self.issueRated {
+            self.closedIssue = true
+            fetchData() {
+                self.view.makeToast("Your issue has been rated successfully")
+            }
+        }
+        
+        if UserDefaults.standard.bool(forKey: UserDefaults.Keys.mustRateIssueFlag.rawValue) {
+            self.showRateIssueViewController()
+        }
     }
+    
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -134,6 +164,7 @@ class IssueTableViewController: UITableViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "issueViewContainer") as! IssueDetailsViewController
         controller.projectIssue = self.projectIssues[indexPath.row]
+        
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

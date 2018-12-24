@@ -45,11 +45,22 @@ struct IssueModel: Codable {
         return false
     }
     
+    func issueClosed() -> Bool {
+        if self.status == "closed" {
+            return true
+        }
+        return false
+    }
+    
 }
 
+
 struct ProjectIssuesModel: Codable {
-    
     var error: Bool
     var result: [IssueModel]
 }
 
+struct CloseIssueResponse: Codable {
+    var error: Bool
+    var result: String
+}
