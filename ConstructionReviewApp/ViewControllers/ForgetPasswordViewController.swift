@@ -18,6 +18,10 @@ class ForgetPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var resetPasswordButton: UIButton!
     let viewModel: ForgotPasswordViewModel = ForgotPasswordViewModel()
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

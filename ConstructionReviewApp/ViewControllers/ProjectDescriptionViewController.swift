@@ -16,13 +16,15 @@ class ProjectDescriptionViewController: UIViewController {
     var additonalHeight: CGFloat?
     var project: ProjectModel?
     var tabBar:  UITabBarController?
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
         projectDescriptionTableView.delegate = self
         projectDescriptionTableView.dataSource = self
-//        self.projectDescriptionTableView.contentInset = UIEdgeInsetsMake(0, 0, 60, 0)
         self.tabBar?.tabBar.isHidden = true
     }
 

@@ -31,7 +31,9 @@ class RegistrationViewController: UIViewController {
     let viewModel = RegistrationViewModel()
     
     @IBOutlet weak var scrollView: UIScrollView!
-    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

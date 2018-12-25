@@ -16,6 +16,10 @@ class InfoViewController: UIViewController {
     @IBOutlet weak var generalManagerEmailLabel: UILabel!
     @IBOutlet weak var managingDirectorEmailLabel: UILabel!
     @IBOutlet weak var crmDirectorEmailLabel: UILabel!
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+
     
     
     override func viewDidLoad() {

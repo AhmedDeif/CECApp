@@ -23,6 +23,10 @@ class LoginViewController: UIViewController {
     weak var activeTextView: UITextField?
     var viewModel = LoginViewModel()
     
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
     var shouldPasswordResetMessage = false
     var passwordResetMessage: String = ""
     

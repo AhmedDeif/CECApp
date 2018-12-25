@@ -18,13 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        UINavigationBar.appearance().barStyle = .blackOpaque
         let isUserLoggedIn = UserDefaults.standard.bool(forKey: UserDefaults.Keys.isLoggedIn.rawValue)
         let accessToken = UserDefaults.standard.string(forKey: UserDefaults.Keys.TokenKey.rawValue)
         if isUserLoggedIn {
             NetworkManager.shared().registerAccessToken(accessToken: accessToken!)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "TabBarController")
-            let viewController = storyboard.instantiateViewController(withIdentifier: "projectsNavigationController") as! UINavigationController
             self.window?.rootViewController = vc
         }
         
