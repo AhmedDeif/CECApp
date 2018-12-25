@@ -92,13 +92,13 @@ class LoginViewController: UIViewController {
         var aRect : CGRect = self.view.frame
         aRect.size.height -= keyboardSize!.height
         
-        let activeTextFieldRect: CGRect? = self.view.window?.convert((activeTextView?.frame)!, from: activeTextView)
-        
+        guard let frame = activeTextView else {
+            return
+        }
+        let activeTextFieldRect: CGRect? = self.view.window?.convert(frame.frame, from: activeTextView)
         let maxPoint: CGPoint? = CGPoint(x: (activeTextFieldRect?.maxX)!, y: (activeTextFieldRect?.maxY)! )
-        if self.activeTextView != nil {
-            if (!aRect.contains(maxPoint!)){
-                self.scrollView.scrollRectToVisible(activeTextFieldRect!, animated: true)
-            }
+        if (!aRect.contains(maxPoint!)) {
+            self.scrollView.scrollRectToVisible(activeTextFieldRect!, animated: true)
         }
     }
     
@@ -113,19 +113,18 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginAction(_ sender: Any) {
-        
         if self.validateFields() {
             self.startAnimating()
-            viewModel.login(username: emailTextfield.text!, password: passwordTextfield.text!) { (loginAuthorised, error) in
+            viewModel.login(username: emailTextfield.text!, password: passwordTextfield.text!) { ( _ , error) in
                 self.stopAnimating()
-                if loginAuthorised {
+                guard let errorType = error else {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "TabBarController")
                     self.present(vc, animated: true, completion: nil)
+
+                    return
                 }
-                else {
-                    self.showError(textfield: self.passwordTextfield, error: error!)
-                }
+                self.showError(textfield: self.passwordTextfield, error: errorType)
             }
         }
     }
@@ -149,13 +148,7 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.activeTextView = nil
-    }
-    
-    
     func validateFields() -> Bool {
-        var allFieldsAreValid = true
         if emailTextfield.hasText {
             let emailValidation = self.viewModel.validateEmailField(text: emailTextfield.text!)
             if !emailValidation.0 {
@@ -170,7 +163,7 @@ extension LoginViewController: UITextFieldDelegate {
             showError(textfield: emailTextfield, error: ErrorModel(type: .emptyField, message: "This field is required"))
             return false
         }
-        return allFieldsAreValid
+        return true
     }
     
     

@@ -49,34 +49,27 @@ class LoginViewModel {
                     if let jsonData = response.data {
                         switch statusCode {
                         case 401:
-                            print(jsonData)
                             let decodedObj = try? JSONDecoder().decode(LoginFailureResponse.self, from: jsonData)
                             self.onFailure()
-                            if completion != nil {
-                                completion!(false, ErrorModel(type: .loginNotAuthorised, message: decodedObj!.msg))
-                            }
-
+                            completion?(false, ErrorModel(type: .loginNotAuthorised, message: decodedObj!.msg))
                         case 200:
-                            
                             let decodedObj = try? JSONDecoder().decode(LoginResponse.self, from: jsonData)
-                            print("authorised: \(decodedObj)")
                             self.onSuccess(token: decodedObj!.token)
-                            if completion != nil {
-                                completion!(true, nil)
-                            }
-
+                            completion?(true, nil)
                         default:
-                            print("unkown status code")
+                            completion?(false, ErrorModel(type: .loginNotAuthorised, message:"The request failed for an unknown reason"))
                         }
                     }
                     
                 case .failure(_):
                     self.onFailure()
-                    if completion != nil {
-                        completion!(false, ErrorModel(type: .loginNotAuthorised, message:"The request failed for an unknown reason"))
-                    }
+                    completion?(false, ErrorModel(type: .loginNotAuthorised, message:"The request failed for an unknown reason"))
                 }
             }
+        }
+        else {
+            completion?(false, ErrorModel(type: .noNetworkConnection, message:"You are not connected to the internet"))
+
         }
     }
     
@@ -91,10 +84,5 @@ class LoginViewModel {
     
     func onFailure() {
         self.dataTaskInProgress = false
-    }
-    
-    
-    func unauthorisedLogin() {
-        
     }
 }

@@ -21,6 +21,10 @@ class ProjectDescriptionViewController: UIViewController {
         registerCells()
         projectDescriptionTableView.delegate = self
         projectDescriptionTableView.dataSource = self
+        self.projectDescriptionTableView.contentInset = UIEdgeInsetsMake(0, 0, 60, 0)
+//        let adjustForTabbarInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 0, self.tabBarController!.tabBar.frame.height, 0)
+//        self.projectDescriptionTableView.contentInset = adjustForTabbarInsets
+//        self.projectDescriptionTableView.scrollIndicatorInsets = adjustForTabbarInsets
         // Do any additional setup after loading the view.
     }
 

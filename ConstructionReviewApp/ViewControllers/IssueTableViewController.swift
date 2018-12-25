@@ -24,6 +24,7 @@ class IssueTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        showCustomBackButton()
         setUpTableView()
         fetchData()
     }
@@ -70,6 +71,10 @@ class IssueTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func customiseNavBar() {
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
     
     func setUpTableView() {
         self.tableView.estimatedRowHeight = 0
@@ -94,26 +99,21 @@ class IssueTableViewController: UITableViewController {
 
     
     func fetchData(sender: UIRefreshControl? = nil, completitonBlock: (()->())? = nil) {
-        if NetworkManager.isConnectedToInternet() {
-            if sender == nil {
-                self.showLoadingIndicator()
-            }
-            viewModel.setProjectId(projectId: String(project!.id))
-            viewModel.getProjectIssues { (requestSucceeded, error) in
-                (sender == nil) ? self.hideLoadingIndicator() : sender?.endRefreshing()
-                if requestSucceeded {
-                    self.projectIssues = self.viewModel.projectIssues
-                    self.tableView.reloadData()
-                }
-                else {
-                    self.view.makeToast(error!.message)
-                }
-                completitonBlock?()
-            }
+        if sender == nil {
+            self.showLoadingIndicator()
         }
-        else {
-            self.view.makeToast("You are not connected to the internet")
-        }
+        viewModel.setProjectId(projectId: String(project!.id))
+        viewModel.getProjectIssues { (requestSucceeded, error) in
+            (sender == nil) ? self.hideLoadingIndicator() : sender?.endRefreshing()
+            if requestSucceeded {
+                self.projectIssues = self.viewModel.projectIssues
+                self.tableView.reloadData()
+            }
+            else {
+                self.view.makeToast(error!.message)
+            }
+            completitonBlock?()
+        } 
     }
     
     // MARK: - Table view data source

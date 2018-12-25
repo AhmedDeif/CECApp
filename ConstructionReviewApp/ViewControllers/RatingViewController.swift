@@ -44,35 +44,20 @@ class RatingViewController: UIViewController {
 
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-        // ToDo: register in defaults that no rating needs to be submitted
-        if NetworkManager.isConnectedToInternet() {
-            let rating: String = String(ratingView.rating)
-            let issue: String = String(issueId!)
-            viewModel.setProjectId(projectId: String(self.projectId!))
-            viewModel.rateIssue(issueId: issue, issueRating: rating) { (error) in
-                if error != nil {
-                    self.view.makeToast(error!.message)
-                }
-                else {
-                    UserDefaults.standard.removeObject(forKey: UserDefaults.Keys.mustRateIssue.rawValue)
-                    UserDefaults.standard.removeObject(forKey: UserDefaults.Keys.mustRateIssueProject.rawValue)
-                    UserDefaults.standard.removeObject(forKey: UserDefaults.Keys.issueDescription.rawValue)
-                    UserDefaults.standard.removeObject(forKey: UserDefaults.Keys.issueTitle.rawValue)
-                    UserDefaults.standard.set(false, forKey: UserDefaults.Keys.mustRateIssueFlag.rawValue)
-//                    if let viewController = self.navigationController?.topViewController as? IssueTableViewController {
-//                        viewController.issueRated = true
-//                        self.dismiss(animated: true, completion: nil)
-//                    }
-//                    if let viewController = self.navigationController?.topViewController as? ProjectsTableViewController {
-//                        viewController.issueRated = true
-//                        self.dismiss(animated: true, completion: nil)
-//                    }
-                    self.dismiss(animated: true, completion: nil)
-                }
+        let rating: String = String(ratingView.rating)
+        let issue: String = String(issueId!)
+        viewModel.setProjectId(projectId: String(self.projectId!))
+        viewModel.rateIssue(issueId: issue, issueRating: rating) { (error) in
+            guard let errorType = error else {
+                UserDefaults.standard.removeObject(forKey: UserDefaults.Keys.mustRateIssue.rawValue)
+                UserDefaults.standard.removeObject(forKey: UserDefaults.Keys.mustRateIssueProject.rawValue)
+                UserDefaults.standard.removeObject(forKey: UserDefaults.Keys.issueDescription.rawValue)
+                UserDefaults.standard.removeObject(forKey: UserDefaults.Keys.issueTitle.rawValue)
+                UserDefaults.standard.set(false, forKey: UserDefaults.Keys.mustRateIssueFlag.rawValue)
+                self.dismiss(animated: true, completion: nil)
+                return
             }
-        }
-        else {
-            self.view.makeToast("You are not connected to the internet")
+            self.view.makeToast(errorType.message)
         }
     }
     

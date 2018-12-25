@@ -62,7 +62,7 @@ class RegistrationViewModel {
     
     
     
-    func registerUser(token:String, password:String, confirmPassword:String, completion: (() -> ())?) {
+    func registerUser(token:String, password:String, confirmPassword:String, completion: ((_ error: ErrorModel?) -> ())?) {
         
         if NetworkManager.isConnectedToInternet() {
             self.dataTaskInProgress = true
@@ -79,20 +79,16 @@ class RegistrationViewModel {
                         self.token = decodedObj?.token
                     }
                     self.onSuccess()
-                    if completion != nil {
-                        completion!()
-                    }
-                    
+                    completion?(nil)
                 case .failure(_):
                     self.onFailure()
-                    if completion != nil {
-                        completion!()
-                    }
+                    completion?(ErrorModel(type: .requestFailed, message: "Failed to register user, please try again"))
                 }
             }
         }
         else {
             self.onFailure()
+            completion?(ErrorModel(type: .noNetworkConnection, message: "You are not connected to the internet"))
         }
         
     }
@@ -110,7 +106,6 @@ class RegistrationViewModel {
         NetworkManager.shared().registerAccessToken(accessToken: self.token!)
         self.token = nil
     }
-    
     
 }
 

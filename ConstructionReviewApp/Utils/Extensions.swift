@@ -111,6 +111,12 @@ extension UIViewController: NVActivityIndicatorViewable {
         rateViewController.issueTitle = issueTitle
         self.present(rateViewController, animated: true, completion: nil)
     }
+    
+    func showCustomBackButton() {
+        navigationController?.navigationBar.backIndicatorImage = #imageLiteral(resourceName: "backButton")
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = #imageLiteral(resourceName: "backButton")
+        navigationItem.leftItemsSupplementBackButton = true
+    }
 }
 
 extension UserDefaults {
@@ -186,6 +192,25 @@ extension UIView {
         }
     }
     
+}
+
+extension UIColor {
+
+    static let doneBlue = UIColor(displayP3Red: 21.0/255.0, green: 174.0/255.0, blue: 155.0/255.0, alpha: 1.0)
+    static let pendingYellow = UIColor(displayP3Red: 239.0/255.0, green: 202.0/255.0, blue: 114.0/255.0, alpha: 1.0)
+    static let closedGreen = UIColor(displayP3Red: 113.0/255.0, green: 239.0/255.0, blue: 123.0/255.0, alpha: 1.0)
+}
+
+class MyNavigationController: UINavigationController, UINavigationControllerDelegate {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.delegate = self
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        let item = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+        viewController.navigationItem.backBarButtonItem = item
+    }
 }
 
 

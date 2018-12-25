@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ForgetPasswordViewController: UIViewController {
+class ForgetPasswordViewController: UIViewController, UITextFieldDelegate {
 
     // ToDo: Add gesture recognizer to dismiss when clicked out of view
     
@@ -22,7 +22,7 @@ class ForgetPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         styleView()
-        // Do any additional setup after loading the view.
+        emailTextfield.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,5 +85,10 @@ class ForgetPasswordViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailTextfield.resignFirstResponder()
+        return true
     }
 }

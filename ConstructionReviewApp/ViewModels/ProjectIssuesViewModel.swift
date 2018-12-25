@@ -55,6 +55,10 @@ class ProjectIssuesViewModel {
                 }
             }
         }
+        else {
+            completion?(false, ErrorModel(type: .noNetworkConnection, message: "You are not connected to the internet"))
+
+        }
     }
     
     

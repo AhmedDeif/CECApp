@@ -32,22 +32,23 @@ class ProjectsViewModel {
                     if let jsonData = response.data {
                         guard let decodedObj = try? JSONDecoder().decode(ProjectResponseModel.self, from: jsonData)
                             else {
-                                print("Serialization failed Error")
                                 self.onFailure()
                                 completion?(ErrorModel(type: .serializationError, message: "Fetching data failed, Please pull to refresh"))
                                 return
                         }
                         self.projects = decodedObj.result
-                        print("Got all projects")
                     }
                     self.onSuccess()
                     completion?(nil)
-                    
                 case .failure(_):
                     self.onFailure()
                     completion?(ErrorModel(type: .serializationError, message: "Fetching data failed, Please pull to refresh"))
                 }
             }
+        }
+        else {
+            completion?(ErrorModel(type: .noNetworkConnection, message: "You are not connected to the internet"))
+
         }
     }
     

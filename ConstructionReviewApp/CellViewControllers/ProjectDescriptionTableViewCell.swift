@@ -65,13 +65,10 @@ class ProjectDescriptionTableViewCell: UITableViewCell {
     
     @objc func sendEmailToEmployee(sender:UITapGestureRecognizer) {
         sendEmail()
-        print("Sending an email to employee")
     }
     
     
     @objc func callEmployee(sender:UITapGestureRecognizer) {
-        print("calling the designated employee with number: \(self.employeeContactNumberLabel.text!)")
-//        UIApplication.sharedApplication.openURL(NSURL(string: "tel://1234567890"))
         UIApplication.shared.open(URL(string: "tel://\(self.employeeContactNumberLabel.text!)")!, options: [:], completionHandler: nil)
     }
     

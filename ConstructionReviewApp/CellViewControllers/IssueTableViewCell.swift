@@ -34,11 +34,24 @@ class IssueTableViewCell: UITableViewCell {
     }
 
     func setCellData(issue: IssueModel) {
+        setStatusLabelColor(issueStatus: issue.status)
         self.issueTypeLabel.text = issue.type
         self.issueDescriptionLabel.text = issue.description
         self.issueStatusLabel.text = issue.status
         self.issueDateLabel.text = issue.getDate()
-        
+    }
+    
+    func setStatusLabelColor(issueStatus: String) {
+        switch issueStatus {
+        case "pending":
+            self.issueStatusLabel.textColor = UIColor.pendingYellow
+        case "done":
+            self.issueStatusLabel.textColor = UIColor.doneBlue
+        case "closed":
+            self.issueStatusLabel.textColor = UIColor.closedGreen
+        default:
+            return
+        }
     }
     
 }

@@ -196,15 +196,14 @@ class ReportIssueViewController: UIViewController,issueImageDeletionProtocol {
             self.showLoadingIndicator()
             viewModel.createIssue { (error) in
                 self.hideLoadingIndicator()
-                if error != nil {
-                    self.view.makeToast(error?.message)
-                }
-                else {
+                guard let errorType = error else {
                     let viewControllersStack = self.navigationController!.viewControllers
                     let parent = viewControllersStack[viewControllersStack.count - 2] as! IssueTableViewController
                     parent.issuePosted = true
                     self.navigationController?.popViewController(animated: true)
+                    return
                 }
+                self.view.makeToast(errorType.message)
             }
         }
     }
@@ -239,8 +238,6 @@ extension ReportIssueViewController: UIPickerViewDelegate {
             issueTypeSelectionLabel.text = constructionIssueTypes[row]
         case .Support:
             issueTypeSelectionLabel.text = supportIssueTypes[row]
-        default:
-            issueTypeSelectionLabel.text = issueTypes[row]
         }
     }
     
@@ -309,7 +306,6 @@ extension ReportIssueViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == issueTypeSelectionLabel {
             let selectedRow = self.isseuTypePickerView.selectedRow(inComponent: 0)
-            print(selectedRow)
             if selectedRow > -1 {
                 self.isseuTypePickerView.selectRow(selectedRow, inComponent: 0, animated: false)
             }

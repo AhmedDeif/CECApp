@@ -33,7 +33,6 @@ class IssueImageCollectionViewCell: UICollectionViewCell, ImageLoadingCompletion
     
     func setData(imageURL: String, indexPath: IndexPath) {
         self.imageView.startShimmering()
-//        print("image url: \(imageURL)")
         NetworkManager.shared().downloadImage(sender: self, url: URL(string:imageURL)!, cellIndex: indexPath.row) { (image, error, cellIndex) in }
     }
 

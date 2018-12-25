@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        FirebaseApp.configure()
         let isUserLoggedIn = UserDefaults.standard.bool(forKey: UserDefaults.Keys.isLoggedIn.rawValue)
         let accessToken = UserDefaults.standard.string(forKey: UserDefaults.Keys.TokenKey.rawValue)
         if isUserLoggedIn {

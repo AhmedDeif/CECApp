@@ -67,7 +67,7 @@ class InfoViewController: UIViewController {
         case "crmEmailGestureRecognizer" :
             sendEmail(email: crmDirectorEmailLabel.text!)
         default:
-            print("problem")
+            sendEmail(email: "")
         }
     }
     

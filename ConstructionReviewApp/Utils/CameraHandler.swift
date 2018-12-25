@@ -32,11 +32,6 @@ class CameraHandler:NSObject {
     }
     
     
-    deinit {
-        print("deallocated")
-    }
-
-
     func useCamera() {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let myPickerController = UIImagePickerController()

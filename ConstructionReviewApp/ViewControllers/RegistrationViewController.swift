@@ -132,35 +132,22 @@ class RegistrationViewController: UIViewController {
     @IBAction func registerButtonTapped(_ sender: Any) {
         
         if viewModel.validateAllFields(token: accessKeyTextfield.text!, password: passwordTextField.text!, confirmPassword: confirmPasswordTextfield.text!) {
-            if NetworkManager.isConnectedToInternet() {
-                self.showLoadingIndicator()
-                viewModel.registerUser(token: accessKeyTextfield.text!, password: passwordTextField.text!, confirmPassword: confirmPasswordTextfield.text!, completion: { () in
-                    self.hideLoadingIndicator()
+            self.showLoadingIndicator()
+            viewModel.registerUser(token: accessKeyTextfield.text!, password: passwordTextField.text!, confirmPassword: confirmPasswordTextfield.text!, completion: { (error) in
+                self.hideLoadingIndicator()
+                guard let errorType = error else {
                     let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "projectsNavigationController") as! UINavigationController
                     self.present(viewController, animated: true, completion: nil)
-                    
-                })
-            }
-            else {
-                self.view.makeToast("Your are not connected to the internet")
-            }
+                    return
+                }
+                self.view.makeToast(errorType.message)
+            })
         }
-        
     }
-    
-    
-    
-    @IBAction func alreadyHaveAnAccountAction(_ sender: Any) {
-        
-        
-    }
-    
-    
     
 
 }
-
 
 
 extension RegistrationViewController: UITextFieldDelegate {
@@ -177,11 +164,7 @@ extension RegistrationViewController: UITextFieldDelegate {
         return true
     }
     
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.activeTextView = nil
-    }
-    
+
     func validateTextFields() {
         if accessKeyTextfield.hasText {
             let tokenValidation = viewModel.validateTokenField(fieldInput: accessKeyTextfield.text!)

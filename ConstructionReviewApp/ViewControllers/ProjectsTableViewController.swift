@@ -39,25 +39,19 @@ class ProjectsTableViewController: UITableViewController {
     
     
     func fetchData(sender: UIRefreshControl? = nil) {
-        if NetworkManager.isConnectedToInternet() {
-            if sender == nil {
-                self.startAnimating()
-            }
-            viewModel.getListOfProjects { error in
-                (sender == nil) ? self.stopAnimating() : sender?.endRefreshing()
-                self.stopAnimating()
-                if error != nil {
-                    self.view.makeToast(error!.message)
-                }
-                else {
-                    // ToDo: update Table
-                    self.projectList = self.viewModel.projects
-                    self.tableView.reloadData()
-                }
-            }
+        if sender == nil {
+            self.startAnimating()
         }
-        else {
-            self.view.makeToast("You are not connected to the internet")
+        viewModel.getListOfProjects { error in
+            (sender == nil) ? self.stopAnimating() : sender?.endRefreshing()
+            self.stopAnimating()
+            guard let errorType = error else {
+                self.projectList = self.viewModel.projects
+                self.tableView.reloadData()
+                
+                return
+            }
+            self.view.makeToast(errorType.message)
         }
     }
     

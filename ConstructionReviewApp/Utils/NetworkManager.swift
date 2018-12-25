@@ -84,9 +84,6 @@ extension NetworkManager {
         if NetworkManager.isConnectedToInternet() {
             NetworkManager.shared().request(url).responseData { (response) in
                 if let data = response.data {
-                    if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
-                        print(JSONString)
-                    }
                     if let image = UIImage(data: data) {
                         if sender != nil {
                             sender?.onImageDownloadComplete(downloadedImage: image, cellIndex:cellIndex )

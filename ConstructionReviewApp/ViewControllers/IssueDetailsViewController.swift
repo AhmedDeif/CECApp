@@ -28,6 +28,7 @@ class IssueDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         styleView()
+        showCustomBackButton()
         viewModel.setProjectId(projectId: String(self.projectIssue!.projectId))
     }
 
@@ -51,6 +52,11 @@ class IssueDetailsViewController: UIViewController {
             self.issueExpansionTime.isHidden = true
             self.issueExpansionTime.isEnabled = false
         }
+        guard let issue = projectIssue else {
+            self.navigationItem.title = "Issue Details"
+            return
+        }
+        self.navigationItem.title = issue.type
     }
     
     
@@ -93,50 +99,38 @@ class IssueDetailsViewController: UIViewController {
     
     
     @IBAction func closeIssue(_ sender: Any) {
-        if NetworkManager.isConnectedToInternet() {
-            self.showLoadingIndicator()
-            viewModel.closeIssue(issueId: String(self.projectIssue!.id)) { (error) in
-                self.hideLoadingIndicator()
-                if error != nil {
-                    self.view.makeToast(error!.message)
-                }
-                else {
-                    UserDefaults.standard.set(self.projectIssue!.id, forKey: UserDefaults.Keys.mustRateIssue.rawValue)
-                    UserDefaults.standard.set(self.projectIssue!.projectId, forKey: UserDefaults.Keys.mustRateIssueProject.rawValue)
-                    UserDefaults.standard.set(self.projectIssue!.description, forKey: UserDefaults.Keys.issueDescription.rawValue)
-                    UserDefaults.standard.set(self.projectIssue!.type, forKey: UserDefaults.Keys.issueTitle.rawValue)
-                    UserDefaults.standard.set(true, forKey: UserDefaults.Keys.mustRateIssueFlag.rawValue)
-                    let viewControllers = self.navigationController?.viewControllers
-                    let issueTableVC = viewControllers![(viewControllers?.count)!-2] as! IssueTableViewController
-                    issueTableVC.closedIssue = true
-                    self.navigationController?.popViewController(animated: true)
-                }
+        self.showLoadingIndicator()
+        viewModel.closeIssue(issueId: String(self.projectIssue!.id)) { (error) in
+            self.hideLoadingIndicator()
+            guard let errorType = error else {
+                UserDefaults.standard.set(self.projectIssue!.id, forKey: UserDefaults.Keys.mustRateIssue.rawValue)
+                UserDefaults.standard.set(self.projectIssue!.projectId, forKey: UserDefaults.Keys.mustRateIssueProject.rawValue)
+                UserDefaults.standard.set(self.projectIssue!.description, forKey: UserDefaults.Keys.issueDescription.rawValue)
+                UserDefaults.standard.set(self.projectIssue!.type, forKey: UserDefaults.Keys.issueTitle.rawValue)
+                UserDefaults.standard.set(true, forKey: UserDefaults.Keys.mustRateIssueFlag.rawValue)
+                let viewControllers = self.navigationController?.viewControllers
+                let issueTableVC = viewControllers![(viewControllers?.count)!-2] as! IssueTableViewController
+                issueTableVC.closedIssue = true
+                self.navigationController?.popViewController(animated: true)
+                return
             }
-        }
-        else {
-            self.view.makeToast("You are not connected to the internet")
+            self.view.makeToast(errorType.message)
         }
     }
     
     
     @IBAction func reopenIssue(_ sender: Any) {
-        if NetworkManager.isConnectedToInternet() {
-            self.showLoadingIndicator()
-            viewModel.reopenIssue(issueId: String(self.projectIssue!.id)) { (error) in
-                self.hideLoadingIndicator()
-                if error != nil {
-                    self.view.makeToast(error!.message)
-                }
-                else {
-                    let viewControllers = self.navigationController?.viewControllers
-                    let issueTableVC = viewControllers![(viewControllers?.count)!-2] as! IssueTableViewController
-                    issueTableVC.issueReopend = true
-                    self.navigationController?.popViewController(animated: true)
-                }
+        self.showLoadingIndicator()
+        viewModel.reopenIssue(issueId: String(self.projectIssue!.id)) { (error) in
+            self.hideLoadingIndicator()
+            guard let errorType = error else {
+                let viewControllers = self.navigationController?.viewControllers
+                let issueTableVC = viewControllers![(viewControllers?.count)!-2] as! IssueTableViewController
+                issueTableVC.issueReopend = true
+                self.navigationController?.popViewController(animated: true)
+                return
             }
-        }
-        else {
-            self.view.makeToast("You are not connected to the internet")
+            self.view.makeToast(errorType.message)
         }
     }
     

@@ -33,20 +33,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ggbgf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CO8-2l-hK2">
-                                <rect key="frame" x="8" y="40.5" width="220" height="12"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="10"/>
+                                <rect key="frame" x="8" y="40.5" width="220" height="13.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                 <color key="textColor" red="0.69680017232894897" green="0.73244577646255493" blue="0.79066020250320435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPZ-xF-prK">
-                                <rect key="frame" x="263.5" y="8" width="39.5" height="12"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="0.74627476930618286" green="0.71193760633468628" blue="0.56531298160552979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="246" y="8" width="43" height="13.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.0" green="0.62339469178082196" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 Nov 18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChV-bD-XD3">
-                                <rect key="frame" x="263.5" y="66" width="43.5" height="11"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <rect key="frame" x="246" y="65" width="47.5" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.64974254369735718" green="0.68538063764572144" blue="0.74359768629074097" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -66,7 +66,7 @@
                             <constraint firstItem="sPZ-xF-prK" firstAttribute="top" secondItem="ER1-qz-hbC" secondAttribute="top" constant="8" id="9j9-5I-ygs"/>
                             <constraint firstItem="cxg-9n-Kcz" firstAttribute="top" secondItem="ER1-qz-hbC" secondAttribute="top" constant="16" id="GLB-BD-hRX"/>
                             <constraint firstAttribute="height" constant="85" id="HLw-7a-FK1"/>
-                            <constraint firstAttribute="trailing" secondItem="sPZ-xF-prK" secondAttribute="trailing" constant="24" id="Kcl-J6-tpm"/>
+                            <constraint firstAttribute="trailing" secondItem="sPZ-xF-prK" secondAttribute="trailing" constant="38" id="Kcl-J6-tpm"/>
                             <constraint firstItem="ZuG-RT-CCR" firstAttribute="centerY" secondItem="ER1-qz-hbC" secondAttribute="centerY" id="QVu-cu-jlC"/>
                             <constraint firstItem="ChV-bD-XD3" firstAttribute="leading" secondItem="sPZ-xF-prK" secondAttribute="leading" id="SM0-82-6qL"/>
                             <constraint firstItem="CO8-2l-hK2" firstAttribute="leading" secondItem="cxg-9n-Kcz" secondAttribute="leading" id="UZU-QH-JDT"/>

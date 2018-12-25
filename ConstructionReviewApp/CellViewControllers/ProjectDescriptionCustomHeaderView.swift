@@ -37,7 +37,6 @@ class ProjectDescriptionCustomHeaderView: UITableViewHeaderFooterView {
     
     @IBAction func readMoreTapped(_ sender: Any) {
         // change height of textView
-        print("tpped")
         if compressedContentHeight == nil {
             self.expandedContentHeight = self.projectDescriptionLabel.contentSize.height
             self.compressedContentHeight = self.projectDescriptionLabelHeight.constant

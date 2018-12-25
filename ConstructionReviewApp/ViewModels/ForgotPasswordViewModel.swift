@@ -18,6 +18,7 @@ class ForgotPasswordViewModel {
     func forgetUserPassword(email: String, completion: ((_ requestSucceeded: Bool, _ error: ErrorModel?) -> ())?) {
         
         if !NetworkManager.isConnectedToInternet() {
+            completion?(false, ErrorModel(type: .noNetworkConnection, message: "You are not connected to the internet"))
             return
         }
         
@@ -41,7 +42,7 @@ class ForgotPasswordViewModel {
                         completion?(true, ErrorModel(type: .requestSucceeded, message: decodedObj!.msg))
                         
                     default:
-                        print("unkown status code")
+                        completion?(false, ErrorModel(type: .loginNotAuthorised, message:"The request failed for an unknown reason"))
                     }
                 }
                 
@@ -57,10 +58,11 @@ class ForgotPasswordViewModel {
         UserDefaults.standard.removeObject(forKey: UserDefaults.Keys.TokenKey.rawValue)
         UserDefaults.standard.set(false, forKey: UserDefaults.Keys.isLoggedIn.rawValue)
         NetworkManager.shared().deregisterAccessToken()
+        self.dataTaskInProgress = false
     }
     
     func onFailure() {
-        
+        self.dataTaskInProgress = false
     }
     
 }

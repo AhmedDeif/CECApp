@@ -70,9 +70,6 @@ class IssueViewModel {
                         }
 
                         if let httpStatusCode = response.response?.statusCode, let data = response.data {
-                            if let JSONString = String(data: data, encoding: String.Encoding.utf8) {
-                                print(JSONString)
-                            }
                             switch(httpStatusCode) {
                             case 200...300:
                                 completion?(nil)
@@ -87,13 +84,16 @@ class IssueViewModel {
                         }
                     }
                     upload.uploadProgress(closure: { progress in
-                        print(progress)
+                        // ToDo: Use progress bar to show upload progress
                     })
                 case .failure(let encodingError):
-                    print(encodingError)
                     self.onFailure()
                 }
             })
+        }
+        else {
+            self.onFailure()
+            completion?(ErrorModel(type: .noNetworkConnection, message:"You are not connected to the internet"))
         }
     }
     
@@ -118,12 +118,10 @@ class IssueViewModel {
                             completion?(ErrorModel(type: .loginNotAuthorised, message: "Unauthorised access"))
                             
                         case 200:
-                            let decodedObj = try? JSONDecoder().decode(CloseIssueResponse.self, from: jsonData)
-                            print("response: \(decodedObj)")
                             self.onSucess()
                             completion?(nil)
                         default:
-                            print("unkown status code")
+                            completion?(ErrorModel(type: .requestFailed, message:"The request failed for an unknown reason"))
                         }
                     }
                     
@@ -134,6 +132,10 @@ class IssueViewModel {
                     }
                 }
             }
+        }
+        else {
+            self.onFailure()
+            completion?(ErrorModel(type: .noNetworkConnection, message:"You are not connected to the internet"))
         }
     }
     
@@ -159,11 +161,10 @@ class IssueViewModel {
                             
                         case 200:
                             let decodedObj = try? JSONDecoder().decode(CloseIssueResponse.self, from: jsonData)
-                            print("response: \(decodedObj)")
                             self.onSucess()
                             completion?(nil)
                         default:
-                            print("unkown status code")
+                            completion?(ErrorModel(type: .requestFailed, message:"The request failed for an unknown reason"))
                         }
                     }
                     
@@ -174,6 +175,10 @@ class IssueViewModel {
                     }
                 }
             }
+        }
+        else {
+            self.onFailure()
+            completion?(ErrorModel(type: .noNetworkConnection, message:"You are not connected to the internet"))
         }
     }
 
@@ -191,19 +196,16 @@ class IssueViewModel {
                     
                 case .success(_):
                     let statusCode = response.response?.statusCode
-                    if let jsonData = response.data {
+                    if let _ = response.data {
                         switch statusCode {
                         case 401:
                             self.onFailure()
                             completion?(ErrorModel(type: .loginNotAuthorised, message: "Unauthorised access"))
-                            
                         case 200:
-//                            let decodedObj = try? JSONDecoder().decode(CloseIssueResponse.self, from: jsonData)
-//                            print("response: \(decodedObj)")
                             self.onSucess()
                             completion?(nil)
                         default:
-                            print("unkown status code")
+                            completion?(ErrorModel(type: .requestFailed, message:"The request failed for an unknown reason"))
                         }
                     }
                     
@@ -212,6 +214,10 @@ class IssueViewModel {
                     completion?(ErrorModel(type: .requestFailed, message:"The request failed for an unknown reason"))
                 }
             }
+        }
+        else {
+            self.onFailure()
+            completion?(ErrorModel(type: .noNetworkConnection, message:"You are not connected to the internet"))
         }
     }
 
