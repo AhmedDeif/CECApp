@@ -17,7 +17,6 @@ class ProjectsViewController: UIViewController {
         super.viewDidLoad()
         self.view.setBackgroudAsGradient()
         
-
     }
 
     override func didReceiveMemoryWarning() {

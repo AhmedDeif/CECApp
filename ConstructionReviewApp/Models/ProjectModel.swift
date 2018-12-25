@@ -45,12 +45,16 @@ struct ProjectModel: Codable {
         if index != nil {
             newDate = String(self.startAt.prefix(upTo: index!))
         }
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
         let date = dateFormatter.date(from: newDate)
         dateFormatter.dateFormat = withFormat
-        let dateString = dateFormatter.string(from: date!)
-        return dateString
+        if date != nil {
+            return dateFormatter.string(from: date!)
+        }
+        return newDate
     }
     
     
@@ -61,12 +65,16 @@ struct ProjectModel: Codable {
         if index != nil {
             newDate = String(self.endAt.prefix(upTo: index!))
         }
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        
         let date = dateFormatter.date(from: newDate)
         dateFormatter.dateFormat = withFormat
-        let dateString = dateFormatter.string(from: date!)
-        return dateString
+        if date != nil {
+            return dateFormatter.string(from: date!)
+        }
+        return newDate
     }
     
     

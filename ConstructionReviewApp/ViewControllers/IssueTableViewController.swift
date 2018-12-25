@@ -186,6 +186,7 @@ extension IssueTableViewController: CustomHeaderDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "ProjectDescriptionViewController") as! ProjectDescriptionViewController
         viewController.project = self.project
+        viewController.tabBar = self.tabBarController
         self.present(viewController, animated: true, completion: nil)
     }
     

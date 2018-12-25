@@ -15,17 +15,15 @@ class ProjectDescriptionViewController: UIViewController {
     let customHeaderResuseIdentifier = "ProjectDescriptionCustomHeaderView"
     var additonalHeight: CGFloat?
     var project: ProjectModel?
+    var tabBar:  UITabBarController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
         projectDescriptionTableView.delegate = self
         projectDescriptionTableView.dataSource = self
-        self.projectDescriptionTableView.contentInset = UIEdgeInsetsMake(0, 0, 60, 0)
-//        let adjustForTabbarInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 0, self.tabBarController!.tabBar.frame.height, 0)
-//        self.projectDescriptionTableView.contentInset = adjustForTabbarInsets
-//        self.projectDescriptionTableView.scrollIndicatorInsets = adjustForTabbarInsets
-        // Do any additional setup after loading the view.
+//        self.projectDescriptionTableView.contentInset = UIEdgeInsetsMake(0, 0, 60, 0)
+        self.tabBar?.tabBar.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,6 +31,9 @@ class ProjectDescriptionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBar?.tabBar.isHidden = false
+    }
     
     func registerCells() {
         self.projectDescriptionTableView.register(UINib(nibName: cellReuseIdentifier, bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)

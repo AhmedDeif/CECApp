@@ -1065,6 +1065,10 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.75904216609589048" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES"/>
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstItem="vm7-wC-RJy" firstAttribute="centerY" secondItem="zZc-6Z-gUq" secondAttribute="centerY" id="LmS-59-jcc"/>
                                     <constraint firstItem="vm7-wC-RJy" firstAttribute="centerX" secondItem="zZc-6Z-gUq" secondAttribute="centerX" id="Qkh-NS-j6v"/>
@@ -1307,7 +1311,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.62481271404109584" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xZz-ph-cRo" firstAttribute="bottom" secondItem="FAD-gp-Qt1" secondAttribute="bottom" id="4zv-Wb-7IT"/>
+                            <constraint firstAttribute="bottom" secondItem="FAD-gp-Qt1" secondAttribute="bottom" id="4zv-Wb-7IT"/>
                             <constraint firstItem="FAD-gp-Qt1" firstAttribute="leading" secondItem="xZz-ph-cRo" secondAttribute="leading" id="B8d-KN-u4g"/>
                             <constraint firstItem="FAD-gp-Qt1" firstAttribute="height" secondItem="xZz-ph-cRo" secondAttribute="height" multiplier="0.7" id="N7m-dK-930"/>
                             <constraint firstItem="xZz-ph-cRo" firstAttribute="trailing" secondItem="FAD-gp-Qt1" secondAttribute="trailing" id="Xi0-gw-SL9"/>
