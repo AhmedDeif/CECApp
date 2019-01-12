@@ -42,8 +42,22 @@ class ProjectTableViewCell: UITableViewCell {
         self.startDate.text = project.getStartDate()
         self.endDate.text = project.getEndDate()
         self.projectStatus.text = project.getProjectPhase()
+        self.setProjectStatusImage(numberOfIssues: project.id)
     }
     
+    func setProjectStatusImage(numberOfIssues: Int) {
+        let remainder = numberOfIssues % 3
+        switch remainder {
+        case 0:
+            projectStatusImageView.image = #imageLiteral(resourceName: "circleYellow")
+        case 1:
+            projectStatusImageView.image = #imageLiteral(resourceName: "circleGreen")
+        case 2:
+            projectStatusImageView.image = #imageLiteral(resourceName: "circleOrange")
+        default:
+            projectStatusImageView.image = #imageLiteral(resourceName: "circleGreen")
+        }
+    }
 
     
 }

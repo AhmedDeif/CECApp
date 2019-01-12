@@ -63,6 +63,8 @@ class ReportIssueViewController: UIViewController,issueImageDeletionProtocol {
         view.addGestureRecognizer(tap)
         viewModel.setProjectId(projectId: self.projectId!)
         viewModel.projectType = self.projectType
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
 

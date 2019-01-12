@@ -45,6 +45,8 @@ class LoginViewController: UIViewController {
         if self.shouldPasswordResetMessage {
             self.view.makeToast(self.passwordResetMessage)
         }
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,6 +60,10 @@ class LoginViewController: UIViewController {
         
     }
     
+    @objc func handleTap() {
+        self.view.endEditing(true)
+    }
+
     
     func styleView() {
         loginButton.layer.cornerRadius = loginButton.frame.height / 2

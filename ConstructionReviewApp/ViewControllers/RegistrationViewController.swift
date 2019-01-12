@@ -68,8 +68,13 @@ class RegistrationViewController: UIViewController {
         confirmPasswordTextfield.tag = 3
         confirmPasswordTextfield.isSecureTextEntry = true
         passwordTextField.isSecureTextEntry = true
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    @objc func handleTap() {
+        self.view.endEditing(true)
+    }
     
     func styleView() {
         let cornerRadius: CGFloat = 5.0
