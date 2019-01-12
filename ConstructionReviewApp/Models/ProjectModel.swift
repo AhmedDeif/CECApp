@@ -83,7 +83,7 @@ struct ProjectModel: Codable {
     }
     
     func getProjectType() -> projectType {
-        if getProjectPhase() == "SUPPORT" {
+        if getProjectPhase() == "support" {
             return projectType.Support
         }
         return projectType.Construction

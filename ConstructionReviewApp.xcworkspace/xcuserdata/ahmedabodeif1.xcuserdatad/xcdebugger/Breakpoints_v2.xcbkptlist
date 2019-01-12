@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
-            timestampString = "568987156.971626"
+            timestampString = "568987607.944337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
-            timestampString = "568987156.971729"
+            timestampString = "568987607.944397"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
-            timestampString = "568987156.971779"
+            timestampString = "568987607.944441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
-            timestampString = "568987156.971858"
+            timestampString = "568987607.944508"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "167"
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
-            timestampString = "568987156.971904"
+            timestampString = "568987607.944549"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
@@ -809,7 +809,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
-            timestampString = "568987156.972345"
+            timestampString = "568987607.944977"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "149"
@@ -825,7 +825,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ConstructionReviewApp/ViewControllers/LoginViewController.swift"
-            timestampString = "568987156.9723901"
+            timestampString = "568987607.945019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
@@ -847,6 +847,22 @@
             startingLineNumber = "189"
             endingLineNumber = "189"
             landmarkName = "didTapDetailsButton()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ConstructionReviewApp/ViewControllers/IssueTableViewController.swift"
+            timestampString = "568987319.584602"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "reportIssue(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

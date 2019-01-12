@@ -1023,6 +1023,7 @@
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" red="0.082726883560000006" green="0.68063458440000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="9Ka-MZ-uPy" firstAttribute="centerY" secondItem="KV1-UR-kHM" secondAttribute="centerY" id="5tm-cq-wzJ"/>
                                                     <constraint firstAttribute="trailing" secondItem="CPC-62-z9C" secondAttribute="trailing" constant="8" id="9N2-ld-xgs"/>
@@ -1599,6 +1600,7 @@
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Issue description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gro-02-Qam">
                                                         <rect key="frame" x="15" y="0.0" width="270" height="100"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" red="0.082726883560000006" green="0.68063458440000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="100" id="nuU-Xc-QHD"/>
                                                         </constraints>
