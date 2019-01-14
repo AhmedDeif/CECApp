@@ -107,6 +107,14 @@ class IssueTableViewController: UITableViewController {
             (sender == nil) ? self.hideLoadingIndicator() : sender?.endRefreshing()
             if requestSucceeded {
                 self.projectIssues = self.viewModel.projectIssues
+                if self.projectIssues.count > 0 {
+                    self.tableView.backgroundView = nil
+                }
+                else {
+                    let view = UINib(nibName: "EmptyTableView", bundle: .main).instantiate(withOwner: nil, options: nil).first as! EmptyTableView
+                    view.setText(alertText: "There are no issues submitted.")
+                    self.tableView.backgroundView = view
+                }
                 self.tableView.reloadData()
             }
             else {

@@ -47,8 +47,15 @@ class ProjectsTableViewController: UITableViewController {
             self.stopAnimating()
             guard let errorType = error else {
                 self.projectList = self.viewModel.projects
+                if self.projectList.count == 0 {
+                    let view = UINib(nibName: "EmptyTableView", bundle: .main).instantiate(withOwner: nil, options: nil).first as! EmptyTableView
+                    view.setText(alertText: "You are not assigned to any projects.")
+                    self.tableView.backgroundView = view
+                }
+                else {
+                    self.tableView.backgroundView = nil
+                }
                 self.tableView.reloadData()
-                
                 return
             }
             self.view.makeToast(errorType.message)
@@ -88,7 +95,9 @@ class ProjectsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         return projectList.count
+        
     }
 
     

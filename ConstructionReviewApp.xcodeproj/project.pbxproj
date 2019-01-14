@@ -53,6 +53,8 @@
 		42A448A421C65D9600E15914 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A448A321C65D9600E15914 /* ForgotPasswordViewModel.swift */; };
 		42A448A621C6618C00E15914 /* ForgetPasswordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A448A521C6618C00E15914 /* ForgetPasswordResponseModel.swift */; };
 		42A448A821C6713600E15914 /* ProjectIssuesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A448A721C6713600E15914 /* ProjectIssuesNavigationController.swift */; };
+		42BFDF7A21ECF9EF00ED04DF /* EmptyTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42BFDF7921ECF9EF00ED04DF /* EmptyTableView.xib */; };
+		42BFDF7C21ECFAB800ED04DF /* EmptyTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BFDF7B21ECFAB800ED04DF /* EmptyTableView.swift */; };
 		42C9C89321A356BE0033ABF9 /* IssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C9C89121A356BE0033ABF9 /* IssueTableViewCell.swift */; };
 		42C9C89421A356BE0033ABF9 /* IssueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C9C89221A356BE0033ABF9 /* IssueTableViewCell.xib */; };
 		42C9C89621A35C0F0033ABF9 /* IssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C9C89521A35C0F0033ABF9 /* IssueTableViewController.swift */; };
@@ -137,6 +139,8 @@
 		42A448A321C65D9600E15914 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		42A448A521C6618C00E15914 /* ForgetPasswordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordResponseModel.swift; sourceTree = "<group>"; };
 		42A448A721C6713600E15914 /* ProjectIssuesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectIssuesNavigationController.swift; sourceTree = "<group>"; };
+		42BFDF7921ECF9EF00ED04DF /* EmptyTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableView.xib; sourceTree = "<group>"; };
+		42BFDF7B21ECFAB800ED04DF /* EmptyTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableView.swift; sourceTree = "<group>"; };
 		42C9C89121A356BE0033ABF9 /* IssueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTableViewCell.swift; sourceTree = "<group>"; };
 		42C9C89221A356BE0033ABF9 /* IssueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueTableViewCell.xib; sourceTree = "<group>"; };
 		42C9C89521A35C0F0033ABF9 /* IssueTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTableViewController.swift; sourceTree = "<group>"; };
@@ -356,6 +360,8 @@
 				42C9C89921A360E20033ABF9 /* ProductDetailsHeaderView.xib */,
 				427EF84021AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.swift */,
 				427EF84121AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.xib */,
+				42BFDF7921ECF9EF00ED04DF /* EmptyTableView.xib */,
+				42BFDF7B21ECFAB800ED04DF /* EmptyTableView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -479,6 +485,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42BFDF7A21ECF9EF00ED04DF /* EmptyTableView.xib in Resources */,
 				4294283D21A437630034A302 /* IssueImageCollectionViewCell.xib in Resources */,
 				4226616621B52B250075B928 /* ProjectDescriptionTableViewCell.xib in Resources */,
 				42C9C89A21A360E20033ABF9 /* ProductDetailsHeaderView.xib in Resources */,
@@ -601,6 +608,7 @@
 				4294284421A45BBF0034A302 /* IssuePicturesCollectionReusableView.swift in Sources */,
 				42F1DD3521BD5AD70070B715 /* RegistrationViewController.swift in Sources */,
 				4297308921A6BA9E00DB71E7 /* ReportIssueViewController.swift in Sources */,
+				42BFDF7C21ECFAB800ED04DF /* EmptyTableView.swift in Sources */,
 				42C9C89621A35C0F0033ABF9 /* IssueTableViewController.swift in Sources */,
 				42F1DD3B21BE86130070B715 /* Constants.swift in Sources */,
 				42A4489E21C524AD00E15914 /* ProjectIssuesViewModel.swift in Sources */,
