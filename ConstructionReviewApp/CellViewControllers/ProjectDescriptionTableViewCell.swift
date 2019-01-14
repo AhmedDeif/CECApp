@@ -89,7 +89,6 @@ extension ProjectDescriptionTableViewCell: MFMailComposeViewControllerDelegate {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self
             mail.setToRecipients([email])
-            mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
             mail.mailComposeDelegate = self
             parentViewController?.present(mail, animated: true)
         }

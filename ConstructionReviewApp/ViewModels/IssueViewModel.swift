@@ -52,7 +52,7 @@ class IssueViewModel {
                 var index = 0;
                 
                 for image in self.issueImages {
-                    let imageName = String(NSDate.timeIntervalSinceReferenceDate) + "-iOS\(index)"
+                    let imageName = String(NSDate.timeIntervalSinceReferenceDate) + "-iOS\(index).jpg"
                     let imageData = image.jpeg(UIImage.JPEGQuality.lowest)!
                     multipartFormData.append(imageData, withName: "images", fileName: imageName, mimeType: "image/jpeg")
                     index += 1
