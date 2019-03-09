@@ -11,8 +11,8 @@ import Foundation
 
 struct ValidateToken: Codable {
     
-    var error: Bool
-    var msg: String
-    var token: String
+    var error: Bool?
+    var msg: String?
+    var token: String?
     
 }

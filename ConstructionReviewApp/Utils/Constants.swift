@@ -10,7 +10,7 @@ import Foundation
 
 
 struct API {
-    static let baseURL = "https://desolate-tor-65119.herokuapp.com"
+    static let baseURL = "https://admincec.tk"
     static let tokenType = ""
     static let validateToken = baseURL + "/api/validateToken"
     static let login = baseURL + "/api/login"

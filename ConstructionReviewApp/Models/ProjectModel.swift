@@ -11,11 +11,11 @@ import Foundation
 struct ProjectModel: Codable {
     
     var id: Int
-    var name: String
-    var description: String
-    var phase: String
-    var startAt: String
-    var endAt: String
+    var name: String?
+    var description: String?
+    var phase: String?
+    var startAt: String?
+    var endAt: String?
     var employees: [EmployeeModel]
     
     enum projectType {
@@ -27,7 +27,7 @@ struct ProjectModel: Codable {
     func getProjectManager() -> String {
         for employee in self.employees {
             if employee.role == "PM" {
-                return employee.name
+                return employee.name ?? "No Project Manager Set"
             }
         }
         return "No manager allocated"
@@ -40,15 +40,16 @@ struct ProjectModel: Codable {
     
     func getStartDate(withFormat: String = "dd-MM-yy") -> String {
         let dateFormatter = DateFormatter()
-        let index = self.startAt.index(of: ".")
         var newDate: String = ""
-        if index != nil {
-            newDate = String(self.startAt.prefix(upTo: index!))
+        if let startAt = self.startAt {
+            let index = startAt.index(of: ".")
+            if index != nil {
+                newDate = String(startAt.prefix(upTo: index!))
+            }
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         }
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        
         let date = dateFormatter.date(from: newDate)
         dateFormatter.dateFormat = withFormat
         if date != nil {
@@ -60,15 +61,17 @@ struct ProjectModel: Codable {
     
     func getEndDate(withFormat: String = "dd-MM-yy") -> String {
         let dateFormatter = DateFormatter()
-        let index = self.endAt.index(of: ".")
         var newDate: String = ""
-        if index != nil {
-            newDate = String(self.endAt.prefix(upTo: index!))
-        }
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         
+        if let endAt = self.endAt {
+            let index = endAt.index(of: ".")
+            if index != nil {
+                newDate = String(endAt.prefix(upTo: index!))
+            }
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        }
         let date = dateFormatter.date(from: newDate)
         dateFormatter.dateFormat = withFormat
         if date != nil {
@@ -79,7 +82,7 @@ struct ProjectModel: Codable {
     
     
     func getProjectPhase() -> String {
-        return self.phase.lowercased()
+        return self.phase?.lowercased() ?? ""
     }
     
     func getProjectType() -> projectType {

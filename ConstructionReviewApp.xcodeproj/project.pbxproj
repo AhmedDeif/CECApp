@@ -33,6 +33,7 @@
 		4235237821AB4A4400B367DA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235237721AB4A4400B367DA /* Extensions.swift */; };
 		4235237A21AB58BF00B367DA /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4235237921AB58BF00B367DA /* ProjectsViewController.swift */; };
 		423A247221B58E5C00C6C8D5 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423A247121B58E5C00C6C8D5 /* RatingViewController.swift */; };
+		424C98C92234399800AB2788 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 424C98C82234399800AB2788 /* GoogleService-Info.plist */; };
 		426EF18B21C9454E00E78655 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426EF18A21C9454E00E78655 /* ImageModel.swift */; };
 		426EF18D21C9459C00E78655 /* IssueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426EF18C21C9459C00E78655 /* IssueModel.swift */; };
 		427EF84221AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427EF84021AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.swift */; };
@@ -60,7 +61,7 @@
 		42C9C89621A35C0F0033ABF9 /* IssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C9C89521A35C0F0033ABF9 /* IssueTableViewController.swift */; };
 		42C9C89821A360560033ABF9 /* ProjectDetailsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C9C89721A360560033ABF9 /* ProjectDetailsHeaderView.swift */; };
 		42C9C89A21A360E20033ABF9 /* ProductDetailsHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42C9C89921A360E20033ABF9 /* ProductDetailsHeaderView.xib */; };
-		42DC23EC21D13A4C00140D2B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42DC23EB21D13A4C00140D2B /* GoogleService-Info.plist */; };
+		42DC23EC21D13A4C00140D2B /* GoogleService-I.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42DC23EB21D13A4C00140D2B /* GoogleService-I.plist */; };
 		42F1DD3521BD5AD70070B715 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F1DD3421BD5AD70070B715 /* RegistrationViewController.swift */; };
 		42F1DD3721BD6BE20070B715 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F1DD3621BD6BE20070B715 /* ForgetPasswordViewController.swift */; };
 		42F1DD3921BE85BA0070B715 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F1DD3821BE85BA0070B715 /* NetworkManager.swift */; };
@@ -94,6 +95,7 @@
 		4206A5A921C1465800261E11 /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 		4206A5AB21C146EC00261E11 /* EmployeeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeModel.swift; sourceTree = "<group>"; };
 		4206A5AD21C1481A00261E11 /* ProjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewModel.swift; sourceTree = "<group>"; };
+		4208A4E7222EEEFB00EA5B15 /* ConstructionReviewApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ConstructionReviewApp.entitlements; sourceTree = "<group>"; };
 		42239D55219DE2B800487413 /* ConstructionReviewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConstructionReviewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42239D58219DE2B800487413 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42239D5D219DE2B800487413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 		4235237721AB4A4400B367DA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4235237921AB58BF00B367DA /* ProjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
 		423A247121B58E5C00C6C8D5 /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		424C98C82234399800AB2788 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		426EF18A21C9454E00E78655 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		426EF18C21C9459C00E78655 /* IssueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueModel.swift; sourceTree = "<group>"; };
 		427EF84021AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailsFooterCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -146,7 +149,7 @@
 		42C9C89521A35C0F0033ABF9 /* IssueTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTableViewController.swift; sourceTree = "<group>"; };
 		42C9C89721A360560033ABF9 /* ProjectDetailsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsHeaderView.swift; sourceTree = "<group>"; };
 		42C9C89921A360E20033ABF9 /* ProductDetailsHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailsHeaderView.xib; sourceTree = "<group>"; };
-		42DC23EB21D13A4C00140D2B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		42DC23EB21D13A4C00140D2B /* GoogleService-I.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-I.plist"; sourceTree = "<group>"; };
 		42F1DD3421BD5AD70070B715 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		42F1DD3621BD6BE20070B715 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		42F1DD3821BE85BA0070B715 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -222,6 +225,7 @@
 		42239D57219DE2B800487413 /* ConstructionReviewApp */ = {
 			isa = PBXGroup;
 			children = (
+				4208A4E7222EEEFB00EA5B15 /* ConstructionReviewApp.entitlements */,
 				42239D7D219DE93D00487413 /* Models */,
 				4235237621AB48C500B367DA /* Storyboards */,
 				427EF83D21AB12A500F4E66D /* Views */,
@@ -233,7 +237,8 @@
 				42239D58219DE2B800487413 /* AppDelegate.swift */,
 				42239D5F219DE2BA00487413 /* Assets.xcassets */,
 				42239D64219DE2BA00487413 /* Info.plist */,
-				42DC23EB21D13A4C00140D2B /* GoogleService-Info.plist */,
+				424C98C82234399800AB2788 /* GoogleService-Info.plist */,
+				42DC23EB21D13A4C00140D2B /* GoogleService-I.plist */,
 			);
 			path = ConstructionReviewApp;
 			sourceTree = "<group>";
@@ -449,6 +454,11 @@
 				TargetAttributes = {
 					42239D54219DE2B800487413 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					42239D68219DE2BA00487413 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -491,10 +501,11 @@
 				42C9C89A21A360E20033ABF9 /* ProductDetailsHeaderView.xib in Resources */,
 				4294284521A45BBF0034A302 /* IssuePicturesCollectionReusableView.xib in Resources */,
 				42239D63219DE2BA00487413 /* LaunchScreen.storyboard in Resources */,
-				42DC23EC21D13A4C00140D2B /* GoogleService-Info.plist in Resources */,
+				42DC23EC21D13A4C00140D2B /* GoogleService-I.plist in Resources */,
 				42C9C89421A356BE0033ABF9 /* IssueTableViewCell.xib in Resources */,
 				42239D60219DE2BA00487413 /* Assets.xcassets in Resources */,
 				427EF84321AB12DD00F4E66D /* IssueDetailsFooterCollectionReusableView.xib in Resources */,
+				424C98C92234399800AB2788 /* GoogleService-Info.plist in Resources */,
 				4226616221B5210A0075B928 /* ProjectDescriptionCustomHeaderView.xib in Resources */,
 				42239D5E219DE2B800487413 /* Main.storyboard in Resources */,
 				42239D81219DE98300487413 /* ProjectTableViewCell.xib in Resources */,
@@ -529,6 +540,7 @@
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -538,6 +550,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -819,16 +832,18 @@
 			baseConfigurationReference = EB12201DD9C72558E9127A7D /* Pods-ConstructionReviewApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = ConstructionReviewApp/ConstructionReviewApp.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 3FNCL22L6F;
+				DEVELOPMENT_TEAM = 6F44KY5YHS;
 				INFOPLIST_FILE = ConstructionReviewApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Abodeif.CECApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.contrade.cectracking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = amrDevProfile;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -839,15 +854,18 @@
 			baseConfigurationReference = ECC6BF796FF069F5BAA69CE8 /* Pods-ConstructionReviewApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3FNCL22L6F;
+				CODE_SIGN_ENTITLEMENTS = ConstructionReviewApp/ConstructionReviewApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 6F44KY5YHS;
 				INFOPLIST_FILE = ConstructionReviewApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Abodeif.CECApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.contrade.cectracking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = amrDistProfile;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

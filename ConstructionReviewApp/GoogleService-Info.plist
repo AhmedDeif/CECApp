@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>835711326098-0ovnrlccdv21cmaq1uqun0vh1iqshcji.apps.googleusercontent.com</string>
+	<string>835711326098-aqs2lsfoia1ndihhkq0f2m12hpcj1ji0.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.835711326098-0ovnrlccdv21cmaq1uqun0vh1iqshcji</string>
+	<string>com.googleusercontent.apps.835711326098-aqs2lsfoia1ndihhkq0f2m12hpcj1ji0</string>
 	<key>API_KEY</key>
 	<string>AIzaSyA5panb1Rna5sW4SmS16enp5mVxxNBNkec</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>Abodeif.CECApp</string>
+	<string>com.contrade.cectracking</string>
 	<key>PROJECT_ID</key>
 	<string>cec-mobile-app</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:835711326098:ios:52ca8c69864d1730</string>
+	<string>1:835711326098:ios:a7fe6376b4fa1bca</string>
 	<key>DATABASE_URL</key>
 	<string>https://cec-mobile-app.firebaseio.com</string>
 </dict>

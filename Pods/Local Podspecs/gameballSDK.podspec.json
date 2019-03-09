@@ -1,0 +1,30 @@
+{
+  "name": "gameballSDK",
+  "platforms": {
+    "ios": "12.0"
+  },
+  "summary": "gameball SDK pod.",
+  "requires_arc": true,
+  "version": "0.1.4",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Ahmed Abodeif": "ahmed.adel.abodeif@gmail.com"
+  },
+  "homepage": "https://github.com/AhmedDeif/gameballSDK",
+  "source": {
+    "git": "https://github.com/AhmedDeif/gameballSDK.git",
+    "tag": "0.1.4"
+  },
+  "frameworks": "UIKit",
+  "dependencies": {
+    "Firebase/Core": [
+
+    ]
+  },
+  "source_files": "gameballSDK/**/*.{swift}",
+  "resources": "gameballSDK/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}",
+  "swift_version": "4.2"
+}

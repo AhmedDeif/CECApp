@@ -10,7 +10,7 @@ import Foundation
 
 struct LoginFailureResponse: Codable {
 
-    var error:Bool
-    var msg:String
+    var error:Bool?
+    var msg:String?
     
 }

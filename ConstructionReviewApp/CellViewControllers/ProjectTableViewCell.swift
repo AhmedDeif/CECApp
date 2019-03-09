@@ -42,7 +42,7 @@ class ProjectTableViewCell: UITableViewCell {
         self.startDate.text = project.getStartDate()
         self.endDate.text = project.getEndDate()
         self.projectStatus.text = project.getProjectPhase()
-        self.setProjectStatusImage(numberOfIssues: project.id)
+        self.setProjectStatusImage(numberOfIssues: project.id ?? 3)
     }
     
     func setProjectStatusImage(numberOfIssues: Int) {

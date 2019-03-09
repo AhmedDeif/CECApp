@@ -34,7 +34,7 @@ class IssueTableViewCell: UITableViewCell {
     }
 
     func setCellData(issue: IssueModel) {
-        setStatusLabelColor(issueStatus: issue.status)
+        setStatusLabelColor(issueStatus: issue.status ?? "pending")
         self.issueTypeLabel.text = issue.type
         self.issueDescriptionLabel.text = issue.description
         self.issueStatusLabel.text = issue.status

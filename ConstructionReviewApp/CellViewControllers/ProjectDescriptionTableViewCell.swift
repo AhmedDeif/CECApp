@@ -56,9 +56,9 @@ class ProjectDescriptionTableViewCell: UITableViewCell {
     
     func setData(employee: EmployeeModel) {
         let stringAttributes = [ NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue]
-        self.employeeEmailLabel.attributedText = NSAttributedString(string: employee.email, attributes: stringAttributes)
+        self.employeeEmailLabel.attributedText = NSAttributedString(string: employee.email ?? "admin@cec.com", attributes: stringAttributes)
         self.employeeTitleLabel.text = employee.employeeRoleString()
-        self.employeeContactNumberLabel.attributedText = NSAttributedString(string: employee.phone, attributes: stringAttributes)
+        self.employeeContactNumberLabel.attributedText = NSAttributedString(string: employee.phone ?? "0233368229", attributes: stringAttributes)
         self.empolyeeName.text = employee.name
     }
     

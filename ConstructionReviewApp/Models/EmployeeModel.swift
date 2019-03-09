@@ -11,10 +11,10 @@ import Foundation
 struct EmployeeModel: Codable {
 
     var id: Int
-    var name: String
-    var email: String
-    var phone: String
-    var role: String
+    var name: String?
+    var email: String?
+    var phone: String?
+    var role: String?
     var EmployeeProjects: EmployeePorjects
     
     func employeeRoleString() -> String {

@@ -51,11 +51,19 @@ class LoginViewModel {
                         case 401:
                             let decodedObj = try? JSONDecoder().decode(LoginFailureResponse.self, from: jsonData)
                             self.onFailure()
-                            completion?(false, ErrorModel(type: .loginNotAuthorised, message: decodedObj!.msg))
+                            completion?(false, ErrorModel(type: .loginNotAuthorised, message: decodedObj?.msg ?? "Your email or password is wrong."))
                         case 200:
                             let decodedObj = try? JSONDecoder().decode(LoginResponse.self, from: jsonData)
-                            self.onSuccess(token: decodedObj!.token)
-                            completion?(true, nil)
+                            if let token = decodedObj?.token {
+                                self.onSuccess(token: token)
+                                completion?(true, nil)
+                            }
+                            else {
+                                self.onFailure()
+                                completion?(false, ErrorModel(type: .loginNotAuthorised, message: "Your email or password is wrong."))
+                            }
+                            
+                            
                         default:
                             completion?(false, ErrorModel(type: .loginNotAuthorised, message:"The request failed for an unknown reason"))
                         }
